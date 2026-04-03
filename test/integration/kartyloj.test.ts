@@ -38,8 +38,26 @@ describe("KartyLojClient integration (special: getByKod, no delete)", () => {
     expect(items).toHaveLength(1);
     const first = items[0] as Record<string, unknown>;
     expect(first.kod).toBe("LOJ-001");
+    expect(first.typ).toBe(1);
+    expect(first.waznaOd).toBeInstanceOf(Date);
+    expect(first.waznaDo).toBeInstanceOf(Date);
     expect(first.posiadacz).toBe("Jan Kowalski");
+    expect(first.opis1).toBe("VIP");
+    expect(first.opis2).toBeUndefined();
+    expect(first.uniewazniono).toBeUndefined();
+    expect(first.nazwiskoImie).toBe("Kowalski Jan");
+    expect(first.skrot).toBe("JK");
     expect(first.telefon).toBe("600100200");
+    expect(first.email).toBe("jan@example.com");
+    expect(first.miejscowosc).toBe("Warszawa");
+    expect(first.ulica).toBe("Nowy Swiat");
+    expect(first.nrDomu).toBe("15");
+    expect(first.nrLokalu).toBe("3");
+    expect(first.kodPoczt).toBe("00-029");
+    expect(first.poczta).toBe("Warszawa");
+    expect(first.nip).toBe("1112223344");
+    expect(first.dataUrodz).toBeInstanceOf(Date);
+    expect(first.plec).toBe(1);
   });
 
   it("list with query passes filter params", async () => {

@@ -41,15 +41,24 @@ describe("TowaryClient integration", () => {
     expect(items).toHaveLength(2);
     const first = items[0] as Record<string, unknown>;
     expect(first.id).toBe(2);
-    expect(first.nazwa).toBe("Product Alpha");
     expect(first.kod).toBe("5901234567890");
+    expect(first.cku).toBe("CKU-001");
+    expect(first.nazwa).toBe("Product Alpha");
     expect(first.stawkaVat).toBe(800);
     expect(first.akcyzowy).toBe(false);
-    expect(first.aktywny).toBe(true);
+    expect(first.typ).toBe(0);
     expect(first.cenaEw).toBeCloseTo(10.63);
     expect(first.cenaDet).toBeCloseTo(16.9);
+    expect(first.cenaHurt).toBeCloseTo(129.9);
+    expect(first.cenaNoc).toBeCloseTo(129.9);
+    expect(first.cenaDod).toBeCloseTo(129.9);
+    expect(first.przySprzedazy).toBe(1);
     expect(first.gtu).toBe("GTU_01");
+    expect(first.aktywny).toBe(true);
     expect(first.masaWl).toBeCloseTo(0.5);
+    expect((first.jm as Record<string, unknown>).id).toBe("2");
+    expect((first.asort as Record<string, unknown>).id).toBe("4");
+    expect(first.ostZmiana).toBeInstanceOf(Date);
   });
 
   it("list with query passes filter params", async () => {

@@ -6,6 +6,35 @@
   "on_page": 1,
   "links": { "self": "http://localhost:9999/demo/dokumenty?start=0" },
   "dane": [
-    { "id": 100, "typ_dok": "PA", "nr_dok": "PA/1/2026", "netto": 81.3, "brutto": 100.0, "podatek": 18.7 }
+    {
+      "id": 100,
+      "typ_dok": 1,
+      "data_wystawienia": "2026-03-15T10:30:00",
+      "data_wplywu": "2026-03-15T10:30:00",
+      "data_wykonania": "2026-03-15T10:30:00",
+      "nr_dok": "PA/1/2026",
+      "karta_rabatowa": null,
+      "nip_na_par": null,
+      "nr_systemowy": "SYS-001",
+      "nr_fiskalny": "F-001",
+      "nr_rap_dobowego": "RD-001",
+      "komentarz": "Test paragon",
+      "sklep": { "id": "1", "link": "http://localhost:9999/demo/sklepy/1" },
+      "sklep_odb": null,
+      "kontrahent": null,
+      "platnik": null,
+      "kasa": { "id": "5", "link": "http://localhost:9999/demo/kasy/5" },
+      "kasjer": { "id": "3", "link": "http://localhost:9999/demo/kasjerzy/3" },
+      "storno": false,
+      "netto": 81.3,
+      "podatek": 18.7,
+      "brutto": 100.0,
+      "rabat": 0.0,
+      "forma_platn": { "id": "1", "link": "http://localhost:9999/demo/formyplatn/1" },
+      "termin_platn": null,
+      "zaplacono": 100.0,
+      "dotyczy": null,
+      "pozycje": { "id": "100", "link": "http://localhost:9999/demo/dokumenty/100/pozycje" }
+    }
   ]
 }

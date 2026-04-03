@@ -6,6 +6,35 @@
   "on_page": 1,
   "links": { "self": "http://localhost:9999/demo/pozdok?start=0" },
   "dane": [
-    { "id": 50, "nr_pozycji": 1, "ilosc": 2.0, "stawka_vat": 2300, "w_brutto": 33.8, "w_netto": 27.48 }
+    {
+      "id": 50,
+      "dokument": { "id": "100", "link": "http://localhost:9999/demo/dokumenty/100" },
+      "towar": { "id": "2", "link": "http://localhost:9999/demo/towary/2" },
+      "nr_pozycji": 1,
+      "ilosc": 2.0,
+      "ilosc_pocz": 2.0,
+      "stawka_vat": 2300,
+      "c_przed_rab_netto": 13.74,
+      "c_przed_rab_brutto": 16.9,
+      "c_po_rab_netto": 13.74,
+      "c_po_rab_brutto": 16.9,
+      "rabat_kwota": 0.0,
+      "w_netto": 27.48,
+      "w_podatek": 6.32,
+      "w_brutto": 33.8,
+      "org_ilosc": 2.0,
+      "org_c_przed_rab_netto": 13.74,
+      "org_c_przed_rab_brutto": 16.9,
+      "org_c_po_rab_netto": 13.74,
+      "org_c_po_rab_brutto": 16.9,
+      "org_rabat_kwota": 0.0,
+      "org_w_netto": 27.48,
+      "org_w_podatek": 6.32,
+      "org_w_brutto": 33.8,
+      "rozl_netto": 0.0,
+      "rozl_podatek": 0.0,
+      "rozl_brutto": 0.0,
+      "storno": false
+    }
   ]
 }

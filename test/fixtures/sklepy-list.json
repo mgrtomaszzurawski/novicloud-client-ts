@@ -6,6 +6,28 @@
   "on_page": 1,
   "links": { "self": "http://localhost:9999/demo/sklepy?start=0" },
   "dane": [
-    { "id": 1, "nazwa": "Sklep Glowny", "numer": 1, "miasto": "Krakow", "aktywny": true }
+    {
+      "id": 1,
+      "nazwa": "Sklep Glowny",
+      "nip": "9876543210",
+      "skrot": "SG",
+      "numer": 1,
+      "ulica": "Krakowska",
+      "nr_domu": "5",
+      "nr_lokalu": null,
+      "ulica_i_numer": "Krakowska 5",
+      "kod_poczt": "30-001",
+      "poczta": "Krakow",
+      "miasto": "Krakow",
+      "gmina": "Krakow",
+      "powiat": "Krakow",
+      "wojewodztwo": "malopolskie",
+      "kraj": { "id": "1", "link": "http://localhost:9999/demo/kraje/1" },
+      "telefon": "121234567",
+      "email": "sklep@test.pl",
+      "bank": "PKO BP",
+      "konto": "PL61109010140000071219812874",
+      "aktywny": true
+    }
   ]
 }

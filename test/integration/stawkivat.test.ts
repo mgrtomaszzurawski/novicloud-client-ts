@@ -23,7 +23,10 @@ describe("StawkiVatClient integration (no update - ADR-022)", () => {
     const items: unknown[] = [];
     for await (const i of client().stawkiVat().list()) items.push(i);
     expect(items).toHaveLength(2);
-    expect((items[0] as Record<string, unknown>).opis).toBe("23%");
+    const first = items[0] as Record<string, unknown>;
+    expect(first.id).toBe(2300);
+    expect(first.opis).toBe("23%");
+    expect(first.etykieta).toBe("A");
   });
 
   it("count returns total", async () => {

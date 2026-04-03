@@ -6,6 +6,30 @@
   "on_page": 1,
   "links": { "self": "http://localhost:9999/demo/kontrahenci?start=0" },
   "dane": [
-    { "id": 10, "nazwa": "Firma ABC", "nip": "1234567890", "skrot": "ABC", "miasto": "Warszawa", "aktywny": true, "dostawca": true }
+    {
+      "id": 10,
+      "nazwa": "Firma ABC",
+      "nip": "1234567890",
+      "skrot": "ABC",
+      "ulica": "Marszalkowska",
+      "nr_domu": "10",
+      "nr_lokalu": "5A",
+      "ulica_i_numer": "Marszalkowska 10/5A",
+      "kod_poczt": "00-001",
+      "poczta": "Warszawa",
+      "miasto": "Warszawa",
+      "gmina": "Warszawa",
+      "powiat": "Warszawa",
+      "wojewodztwo": "mazowieckie",
+      "kraj": { "id": "1", "link": "http://localhost:9999/demo/kraje/1" },
+      "telefon": "221234567",
+      "email": "biuro@firma-abc.pl",
+      "aktywny": true,
+      "dostawca": true,
+      "staly": false,
+      "producent": false,
+      "odbiorca": true,
+      "osoba": false
+    }
   ]
 }

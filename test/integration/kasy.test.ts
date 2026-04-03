@@ -36,6 +36,9 @@ describe("KasyClient integration (read-only)", () => {
     expect(first.id).toBe(5);
     expect(first.nazwa).toBe("Kasa Glowna");
     expect(first.numer).toBe(1);
+    expect(first.ecr).toBe("ECR-100");
+    expect(first.ostatniaSync).toBeInstanceOf(Date);
+    expect(first.ostatniaSprzed).toBeInstanceOf(Date);
     expect(first.aktywny).toBe(true);
   });
 

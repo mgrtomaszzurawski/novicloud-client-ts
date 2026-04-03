@@ -1,5 +1,25 @@
 {
   "status": 200,
   "status_opis": "Ok",
-  "dane": { "id": 200, "nr_dok": "PA/1/2026", "typ_dok": "PA", "ilosc": 3.0, "cena": 16.9, "brutto": 50.7 }
+  "dane": {
+    "id": 200,
+    "data": "2026-03-15T10:30:00",
+    "nr_dok": "PA/1/2026",
+    "typ_dok": 1,
+    "nr_systemowy": "SYS-001",
+    "nr_fiskalny": "F-001",
+    "nr_rap_dob": "RD-001",
+    "ilosc": 3.0,
+    "cena": 16.9,
+    "cena_przed_rab": 16.9,
+    "stawka_vat": 2300,
+    "brutto": 50.7,
+    "podatek": 9.53,
+    "rabat": 0.0,
+    "towar": { "id": "2", "link": "http://localhost:9999/demo/towary/2" },
+    "sklep": { "id": "1", "link": "http://localhost:9999/demo/sklepy/1" },
+    "kasa": { "id": "5", "link": "http://localhost:9999/demo/kasy/5" },
+    "kasjer": { "id": "3", "link": "http://localhost:9999/demo/kasjerzy/3" },
+    "kontrahent": null
+  }
 }

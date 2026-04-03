@@ -23,7 +23,12 @@ describe("FormyPlatnClient integration (soft-delete CRUD)", () => {
     const items: unknown[] = [];
     for await (const i of client().formyPlatn().list()) items.push(i);
     expect(items).toHaveLength(1);
-    expect((items[0] as Record<string, unknown>).nazwa).toBe("Gotowka");
+    const first = items[0] as Record<string, unknown>;
+    expect(first.id).toBe(1);
+    expect(first.nazwa).toBe("Gotowka");
+    expect(first.typ).toBe(0);
+    expect(first.reszta).toBe(true);
+    expect(first.aktywny).toBe(true);
   });
 
   it("count returns total", async () => {

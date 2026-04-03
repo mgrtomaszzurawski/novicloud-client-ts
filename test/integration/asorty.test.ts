@@ -37,6 +37,7 @@ describe("AsortyClient integration (hard-delete CRUD)", () => {
     const first = items[0] as Record<string, unknown>;
     expect(first.id).toBe(1);
     expect(first.nazwa).toBe("Owoce");
+    expect(first.parent).toBeUndefined();
   });
 
   it("list with query passes filter params", async () => {

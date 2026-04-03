@@ -35,7 +35,13 @@ describe("StanyMagClient integration (special endpoints)", () => {
 
     expect(items).toHaveLength(1);
     const first = items[0] as Record<string, unknown>;
-    expect(first.ilosc).toBe(25.0);
+    expect((first.towar as Record<string, unknown>).id).toBe("2");
+    expect((first.sklep as Record<string, unknown>).id).toBe("1");
+    expect(first.ilosc).toBeCloseTo(25.0);
+    expect(first.wCZakNetto).toBeCloseTo(265.75);
+    expect(first.wCZakBrutto).toBeCloseTo(326.87);
+    expect(first.wCSprzedNetto).toBeCloseTo(343.9);
+    expect(first.wCSprzedBrutto).toBeCloseTo(422.5);
   });
 
   it("count returns total", async () => {

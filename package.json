@@ -32,7 +32,15 @@
     "format": "prettier --write src/ test/ demo/",
     "format:check": "prettier --check src/ test/ demo/",
     "demo": "tsx demo/demo.ts",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "audit:runtime": "npm audit --omit=dev"
+  },
+  "overrides": {
+    "@openapitools/openapi-generator-cli": {
+      "@nestjs/core": {
+        "path-to-regexp": "^8.3.1"
+      }
+    }
   },
   "keywords": [
     "novicloud",

@@ -2,8 +2,12 @@
   "status": 200,
   "status_opis": "Ok",
   "dane": {
-    "ilosc": 25.0,
     "towar": { "id": "2", "link": "http://localhost:9999/demo/towary/2" },
-    "sklep": { "id": "1", "link": "http://localhost:9999/demo/sklepy/1" }
+    "sklep": { "id": "1", "link": "http://localhost:9999/demo/sklepy/1" },
+    "ilosc": 25.0,
+    "w_c_zak_netto": 265.75,
+    "w_c_zak_brutto": 326.87,
+    "w_c_sprzed_netto": 343.90,
+    "w_c_sprzed_brutto": 422.50
   }
 }

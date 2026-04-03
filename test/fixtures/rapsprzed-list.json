@@ -6,6 +6,28 @@
   "on_page": 1,
   "links": { "self": "http://localhost:9999/demo/rapsprzed?start=0" },
   "dane": [
-    { "ilosc": 150.0, "sprz_netto": 4500.0, "sprz_brutto": 5535.0, "rabat": 50.0 }
+    {
+      "towar": { "id": "2", "link": "http://localhost:9999/demo/towary/2" },
+      "asort": { "id": "1", "link": "http://localhost:9999/demo/asorty/1" },
+      "sklep": { "id": "1", "link": "http://localhost:9999/demo/sklepy/1" },
+      "kasa": null,
+      "kasjer": null,
+      "kontrahent": null,
+      "karta_rabatowa": null,
+      "forma_platn": null,
+      "ilosc": 150.0,
+      "sprz_netto": 4500.0,
+      "sprz_brutto": 5535.0,
+      "sprz_zak_netto": 3200.0,
+      "sprz_zak_brutto": 3936.0,
+      "marza_netto": 1300.0,
+      "marza_brutto": 1599.0,
+      "marza_proc_netto": 28.89,
+      "marza_proc_brutto": 28.89,
+      "narzut_proc_netto": 40.63,
+      "narzut_proc_brutto": 40.63,
+      "rabat": 50.0,
+      "rabat_proc": 0.89
+    }
   ]
 }

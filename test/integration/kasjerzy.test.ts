@@ -21,7 +21,11 @@ describe("KasjerzyClient integration (read-only)", () => {
     const items: unknown[] = [];
     for await (const i of client().kasjerzy().list()) items.push(i);
     expect(items).toHaveLength(1);
-    expect((items[0] as Record<string, unknown>).nazwisko).toBe("Kowalski");
+    const first = items[0] as Record<string, unknown>;
+    expect(first.id).toBe(3);
+    expect(first.nazwisko).toBe("Kowalski");
+    expect(first.kodKasjera).toBe("KAS01");
+    expect(first.aktywny).toBe(true);
   });
 
   it("count returns total", async () => {

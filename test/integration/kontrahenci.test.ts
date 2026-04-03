@@ -24,9 +24,29 @@ describe("KontrahenciClient integration (soft-delete CRUD)", () => {
     for await (const i of client().kontrahenci().list()) items.push(i);
     expect(items).toHaveLength(1);
     const first = items[0] as Record<string, unknown>;
+    expect(first.id).toBe(10);
     expect(first.nazwa).toBe("Firma ABC");
     expect(first.nip).toBe("1234567890");
+    expect(first.skrot).toBe("ABC");
+    expect(first.ulica).toBe("Marszalkowska");
+    expect(first.nrDomu).toBe("10");
+    expect(first.nrLokalu).toBe("5A");
+    expect(first.ulicaINumer).toBe("Marszalkowska 10/5A");
+    expect(first.kodPoczt).toBe("00-001");
+    expect(first.poczta).toBe("Warszawa");
+    expect(first.miasto).toBe("Warszawa");
+    expect(first.gmina).toBe("Warszawa");
+    expect(first.powiat).toBe("Warszawa");
+    expect(first.wojewodztwo).toBe("mazowieckie");
+    expect((first.kraj as Record<string, unknown>).id).toBe("1");
+    expect(first.telefon).toBe("221234567");
+    expect(first.email).toBe("biuro@firma-abc.pl");
     expect(first.aktywny).toBe(true);
+    expect(first.dostawca).toBe(true);
+    expect(first.staly).toBe(false);
+    expect(first.producent).toBe(false);
+    expect(first.odbiorca).toBe(true);
+    expect(first.osoba).toBe(false);
   });
 
   it("count returns total", async () => {

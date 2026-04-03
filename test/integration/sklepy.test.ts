@@ -23,7 +23,28 @@ describe("SklepyClient integration (soft-delete CRUD)", () => {
     const items: unknown[] = [];
     for await (const i of client().sklepy().list()) items.push(i);
     expect(items).toHaveLength(1);
-    expect((items[0] as Record<string, unknown>).nazwa).toBe("Sklep Glowny");
+    const first = items[0] as Record<string, unknown>;
+    expect(first.id).toBe(1);
+    expect(first.nazwa).toBe("Sklep Glowny");
+    expect(first.nip).toBe("9876543210");
+    expect(first.skrot).toBe("SG");
+    expect(first.numer).toBe(1);
+    expect(first.ulica).toBe("Krakowska");
+    expect(first.nrDomu).toBe("5");
+    expect(first.nrLokalu).toBeUndefined();
+    expect(first.ulicaINumer).toBe("Krakowska 5");
+    expect(first.kodPoczt).toBe("30-001");
+    expect(first.poczta).toBe("Krakow");
+    expect(first.miasto).toBe("Krakow");
+    expect(first.gmina).toBe("Krakow");
+    expect(first.powiat).toBe("Krakow");
+    expect(first.wojewodztwo).toBe("malopolskie");
+    expect((first.kraj as Record<string, unknown>).id).toBe("1");
+    expect(first.telefon).toBe("121234567");
+    expect(first.email).toBe("sklep@test.pl");
+    expect(first.bank).toBe("PKO BP");
+    expect(first.konto).toBe("PL61109010140000071219812874");
+    expect(first.aktywny).toBe(true);
   });
 
   it("count returns total", async () => {

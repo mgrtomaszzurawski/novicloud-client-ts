@@ -23,7 +23,10 @@ describe("JmiaryClient integration (hard-delete CRUD)", () => {
     const items: unknown[] = [];
     for await (const i of client().jmiary().list()) items.push(i);
     expect(items).toHaveLength(2);
-    expect((items[0] as Record<string, unknown>).nazwa).toBe("szt");
+    const first = items[0] as Record<string, unknown>;
+    expect(first.id).toBe(1);
+    expect(first.nazwa).toBe("szt");
+    expect(first.precyzja).toBe(0);
   });
 
   it("count returns total", async () => {

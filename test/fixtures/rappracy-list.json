@@ -6,6 +6,28 @@
   "on_page": 1,
   "links": { "self": "http://localhost:9999/demo/rappracy?start=0" },
   "dane": [
-    { "czas_pracy": "08:00", "utarg": 3200.0, "gotowka": 1500.0, "karta": 1700.0, "paragony_ilosc": 45 }
+    {
+      "sklep": { "id": "1", "link": "http://localhost:9999/demo/sklepy/1" },
+      "kasa": { "id": "5", "link": "http://localhost:9999/demo/kasy/5" },
+      "kasjer": { "id": "3", "link": "http://localhost:9999/demo/kasjerzy/3" },
+      "czas_pracy": 480,
+      "utarg": 3200.0,
+      "gotowka": 1500.0,
+      "karta": 1700.0,
+      "czek": 0.0,
+      "bon": 0.0,
+      "przelew": 0.0,
+      "inna": 0.0,
+      "paragony_ilosc": 45,
+      "paragony_wartosc": 2800.0,
+      "paragony_pozycje": 120,
+      "faktury_ilosc": 3,
+      "faktury_wartosc": 400.0,
+      "faktury_pozycje": 8,
+      "storno_pozycje": 1,
+      "storno_wartosc": 16.9,
+      "paragony_anulowane_ilosc": 0,
+      "paragony_anulowane_wartosc": 0.0
+    }
   ]
 }

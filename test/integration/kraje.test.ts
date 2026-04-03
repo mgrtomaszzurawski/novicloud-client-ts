@@ -23,8 +23,11 @@ describe("KrajeClient integration (hard-delete CRUD)", () => {
     const items: unknown[] = [];
     for await (const i of client().kraje().list()) items.push(i);
     expect(items).toHaveLength(2);
-    expect((items[0] as Record<string, unknown>).nazwa).toBe("Polska");
-    expect((items[0] as Record<string, unknown>).kod).toBe("PL");
+    const first = items[0] as Record<string, unknown>;
+    expect(first.id).toBe(1);
+    expect(first.nazwa).toBe("Polska");
+    expect(first.kod).toBe("PL");
+    expect((first.waluta as Record<string, unknown>).id).toBe("1");
   });
 
   it("count returns total", async () => {

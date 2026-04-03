@@ -24,8 +24,11 @@ describe("WalutyClient integration (soft-delete CRUD)", () => {
     for await (const i of client().waluty().list()) items.push(i);
     expect(items).toHaveLength(2);
     const first = items[0] as Record<string, unknown>;
+    expect(first.id).toBe(1);
     expect(first.nazwa).toBe("zloty");
     expect(first.kod).toBe("PLN");
+    expect(first.kurs).toBeCloseTo(1.0);
+    expect(first.domyslna).toBe(true);
     expect(first.aktywny).toBe(true);
   });
 

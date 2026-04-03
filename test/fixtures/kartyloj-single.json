@@ -4,11 +4,24 @@
   "dane": {
     "kod": "LOJ-001",
     "typ": 1,
-    "posiadacz": "Jan Kowalski",
-    "telefon": "600100200",
-    "email": "jan@example.com",
     "wazna_od": "2026-01-01",
     "wazna_do": "2027-01-01",
-    "uniewazniono": null
+    "posiadacz": "Jan Kowalski",
+    "opis_1": "VIP",
+    "opis_2": null,
+    "uniewazniono": null,
+    "nazwisko_imie": "Kowalski Jan",
+    "skrot": "JK",
+    "telefon": "600100200",
+    "email": "jan@example.com",
+    "miejscowosc": "Warszawa",
+    "ulica": "Nowy Swiat",
+    "nr_domu": "15",
+    "nr_lokalu": "3",
+    "kod_poczt": "00-029",
+    "poczta": "Warszawa",
+    "nip": "1112223344",
+    "data_urodz": "1985-06-15",
+    "plec": 1
   }
 }
