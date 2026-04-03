@@ -15,6 +15,7 @@
  */
 
 import { NoviCloudClient, NoviCloudError, type PagedResult } from "../src/index.js";
+import { JmiaryPrecyzjaEnum } from "../src/generated/src/models/Jmiary.js";
 
 // ---------------------------------------------------------------------------
 // Config
@@ -32,6 +33,7 @@ if (!ACCOUNT || !PASSWORD) {
 
 const LIST_LIMIT = 3;
 const SEEK_POSITION = 76;
+const SEPARATOR_WIDTH = 60;
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -90,85 +92,87 @@ async function safe(endpoint: string, fn: () => Promise<void>): Promise<void> {
 // ---------------------------------------------------------------------------
 
 const CRUD_TIMESTAMP = Date.now();
+const CRUD_KOD_SUFFIX_LENGTH = 6;
 const CRUD_ASORTY_NAME = `sdk-test-asorty-${CRUD_TIMESTAMP}`;
 const CRUD_JMIARY_NAME = `sdk-test-jm-${CRUD_TIMESTAMP}`;
 const CRUD_KRAJE_NAME = `SDK-Test-${CRUD_TIMESTAMP}`;
-const CRUD_KRAJE_KOD = `T${String(CRUD_TIMESTAMP).slice(-2)}`;
+const CRUD_KRAJE_KOD = `T${String(CRUD_TIMESTAMP).slice(-CRUD_KOD_SUFFIX_LENGTH)}`;
+
+// ---------------------------------------------------------------------------
+// CRUD_SAFE helper - shared create -> read -> update -> delete cycle
+// ---------------------------------------------------------------------------
+
+interface CrudClient<T> {
+  create(item: T): Promise<string | undefined>;
+  getById(id: number): Promise<T>;
+  update(item: T): Promise<void>;
+  deleteById(id: number): Promise<void>;
+}
+
+async function runCrudCycle<T>(
+  endpoint: string,
+  api: CrudClient<T>,
+  createPayload: T,
+  updatePayload: (createdId: number) => T,
+  labelFn: (item: T) => string,
+): Promise<void> {
+  log(endpoint, "create...");
+  const createdId = await api.create(createPayload);
+  log(endpoint, `created -> id=${createdId}`);
+
+  if (!createdId) {
+    log(endpoint, "SKIP: create returned no id");
+    return;
+  }
+
+  const numericId = parseInt(createdId, 10);
+  const fetched = await api.getById(numericId);
+  log(endpoint, `getById(${numericId}) -> ${labelFn(fetched)}`);
+
+  await api.update(updatePayload(numericId));
+  const afterUpdate = await api.getById(numericId);
+  log(endpoint, `update -> ${labelFn(afterUpdate)}`);
+
+  await api.deleteById(numericId);
+  log(endpoint, `deleteById(${numericId}) -> hard-deleted`);
+}
 
 // ---------------------------------------------------------------------------
 // CRUD_SAFE runners (create -> read -> update -> delete cycle)
 // ---------------------------------------------------------------------------
 
 async function runCrudAsorty(client: NoviCloudClient): Promise<void> {
-  const api = client.asorty();
-  log("crud-asorty", "create...");
-  const createdId = await api.create({ nazwa: CRUD_ASORTY_NAME } as never);
-  log("crud-asorty", `created -> id=${createdId}`);
-
-  if (!createdId) {
-    log("crud-asorty", "SKIP: create returned no id");
-    return;
-  }
-
-  const numericId = parseInt(createdId, 10);
-  const fetched = await api.getById(numericId);
-  log("crud-asorty", `getById(${numericId}) -> nazwa=${fetched.nazwa}`);
-
-  const updatedName = `${CRUD_ASORTY_NAME}-updated`;
-  await api.update({ id: numericId, nazwa: updatedName } as never);
-  const afterUpdate = await api.getById(numericId);
-  log("crud-asorty", `update -> nazwa=${afterUpdate.nazwa}`);
-
-  await api.deleteById(numericId);
-  log("crud-asorty", `deleteById(${numericId}) -> hard-deleted`);
+  await runCrudCycle(
+    "crud-asorty",
+    client.asorty(),
+    { nazwa: CRUD_ASORTY_NAME },
+    (createdId) => ({ id: createdId, nazwa: `${CRUD_ASORTY_NAME}-updated` }),
+    (item) => `nazwa=${item.nazwa}`,
+  );
 }
 
 async function runCrudJmiary(client: NoviCloudClient): Promise<void> {
-  const api = client.jmiary();
-  log("crud-jmiary", "create...");
-  const createdId = await api.create({ nazwa: CRUD_JMIARY_NAME, precyzja: 2 } as never);
-  log("crud-jmiary", `created -> id=${createdId}`);
-
-  if (!createdId) {
-    log("crud-jmiary", "SKIP: create returned no id");
-    return;
-  }
-
-  const numericId = parseInt(createdId, 10);
-  const fetched = await api.getById(numericId);
-  log("crud-jmiary", `getById(${numericId}) -> nazwa=${fetched.nazwa} precyzja=${fetched.precyzja}`);
-
-  const updatedName = `${CRUD_JMIARY_NAME}-upd`;
-  await api.update({ id: numericId, nazwa: updatedName, precyzja: 3 } as never);
-  const afterUpdate = await api.getById(numericId);
-  log("crud-jmiary", `update -> nazwa=${afterUpdate.nazwa} precyzja=${afterUpdate.precyzja}`);
-
-  await api.deleteById(numericId);
-  log("crud-jmiary", `deleteById(${numericId}) -> hard-deleted`);
+  await runCrudCycle(
+    "crud-jmiary",
+    client.jmiary(),
+    { nazwa: CRUD_JMIARY_NAME, precyzja: JmiaryPrecyzjaEnum.NUMBER_2 },
+    (createdId) => ({
+      id: createdId,
+      nazwa: `${CRUD_JMIARY_NAME}-upd`,
+      precyzja: JmiaryPrecyzjaEnum.NUMBER_3,
+    }),
+    (item) => `nazwa=${item.nazwa} precyzja=${item.precyzja}`,
+  );
 }
 
 async function runCrudKraje(client: NoviCloudClient): Promise<void> {
-  const api = client.kraje();
-  log("crud-kraje", "create...");
-  const createdId = await api.create({ nazwa: CRUD_KRAJE_NAME, kod: CRUD_KRAJE_KOD } as never);
-  log("crud-kraje", `created -> id=${createdId}`);
-
-  if (!createdId) {
-    log("crud-kraje", "SKIP: create returned no id");
-    return;
-  }
-
-  const numericId = parseInt(createdId, 10);
-  const fetched = await api.getById(numericId);
-  log("crud-kraje", `getById(${numericId}) -> nazwa=${fetched.nazwa} kod=${fetched.kod}`);
-
-  const updatedName = `${CRUD_KRAJE_NAME}-upd`;
-  await api.update({ id: numericId, nazwa: updatedName, kod: CRUD_KRAJE_KOD } as never);
-  const afterUpdate = await api.getById(numericId);
-  log("crud-kraje", `update -> nazwa=${afterUpdate.nazwa}`);
-
-  await api.deleteById(numericId);
-  log("crud-kraje", `deleteById(${numericId}) -> hard-deleted`);
+  await runCrudCycle(
+    "crud-kraje",
+    client.kraje(),
+    { nazwa: CRUD_KRAJE_NAME, kod: CRUD_KRAJE_KOD },
+    (createdId) => ({ id: createdId, nazwa: `${CRUD_KRAJE_NAME}-upd`, kod: CRUD_KRAJE_KOD }),
+    (item) => `nazwa=${item.nazwa} kod=${item.kod}`,
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -315,7 +319,7 @@ async function runKartyLoj(client: NoviCloudClient): Promise<void> {
 async function main(): Promise<void> {
   console.log(`NoviCloud TS SDK Demo - mode=${MODE}`);
   console.log(`Account: ${ACCOUNT}`);
-  console.log("=".repeat(60));
+  console.log("=".repeat(SEPARATOR_WIDTH));
 
   const client = NoviCloudClient.create(ACCOUNT, PASSWORD, {
     baseUrl: BASE_URL,
@@ -349,7 +353,7 @@ async function main(): Promise<void> {
 
   // CRUD_SAFE: create -> read -> update -> delete on hard-delete endpoints
   if (MODE === "CRUD_SAFE") {
-    console.log("\n" + "=".repeat(60));
+    console.log("\n" + "=".repeat(SEPARATOR_WIDTH));
     console.log("CRUD_SAFE: testing create/update/delete on hard-delete endpoints\n");
 
     const crudRunners: [string, (c: NoviCloudClient) => Promise<void>][] = [
@@ -364,7 +368,7 @@ async function main(): Promise<void> {
     }
   }
 
-  console.log("\n" + "=".repeat(60));
+  console.log("\n" + "=".repeat(SEPARATOR_WIDTH));
   console.log("Demo complete.");
   client.close();
 }
