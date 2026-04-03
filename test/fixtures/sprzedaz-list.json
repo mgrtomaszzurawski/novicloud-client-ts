@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 1,
+  "start": 0,
+  "on_page": 1,
+  "links": { "self": "http://localhost:9999/demo/sprzedaz?start=0" },
+  "dane": [
+    { "id": 200, "nr_dok": "PA/1/2026", "typ_dok": "PA", "ilosc": 3.0, "cena": 16.9, "brutto": 50.7 }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 1,
+  "start": 0,
+  "on_page": 1,
+  "links": { "self": "http://localhost:9999/demo/pozdok?start=0" },
+  "dane": [
+    { "id": 50, "nr_pozycji": 1, "ilosc": 2.0, "stawka_vat": 2300, "w_brutto": 33.8, "w_netto": 27.48 }
+  ]
+}

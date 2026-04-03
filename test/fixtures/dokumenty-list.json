@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 1,
+  "start": 0,
+  "on_page": 1,
+  "links": { "self": "http://localhost:9999/demo/dokumenty?start=0" },
+  "dane": [
+    { "id": 100, "typ_dok": "PA", "nr_dok": "PA/1/2026", "netto": 81.3, "brutto": 100.0, "podatek": 18.7 }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "dane": {
+    "id": 5,
+    "nazwa": "Kasa Glowna",
+    "numer": 1,
+    "ecr": "ECR-100",
+    "aktywny": true,
+    "sklep": { "id": "1", "link": "http://localhost:9999/demo/sklepy/1" }
+  }
+}

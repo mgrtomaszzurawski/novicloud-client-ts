@@ -1,0 +1,5 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "dane": { "id": 1, "nazwa": "zloty", "kod": "PLN", "kurs": 1.0, "domyslna": true, "aktywny": true }
+}

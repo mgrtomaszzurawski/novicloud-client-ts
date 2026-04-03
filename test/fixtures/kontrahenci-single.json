@@ -1,0 +1,5 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "dane": { "id": 10, "nazwa": "Firma ABC", "nip": "1234567890", "skrot": "ABC", "miasto": "Warszawa", "aktywny": true, "dostawca": true }
+}

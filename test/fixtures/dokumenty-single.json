@@ -1,0 +1,5 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "dane": { "id": 100, "typ_dok": "PA", "nr_dok": "PA/1/2026", "netto": 81.3, "brutto": 100.0, "podatek": 18.7 }
+}

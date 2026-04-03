@@ -1,0 +1,54 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 2,
+  "start": 0,
+  "on_page": 2,
+  "links": {
+    "self": "http://localhost:9999/demo/towary?start=0"
+  },
+  "dane": [
+    {
+      "id": 2,
+      "kod": "5901234567890",
+      "cku": "CKU-001",
+      "nazwa": "Product Alpha",
+      "stawka_vat": 800,
+      "akcyzowy": false,
+      "typ": 0,
+      "cena_ew": 10.63,
+      "cena_det": 16.9,
+      "cena_hurt": 129.9,
+      "cena_noc": 129.9,
+      "cena_dod": 129.9,
+      "przy_sprzedazy": 1,
+      "gtu": "GTU_01",
+      "aktywny": true,
+      "masa_wl": 0.5,
+      "jm": { "id": "2", "link": "http://localhost:9999/demo/jmiary/2" },
+      "asort": { "id": "4", "link": "http://localhost:9999/demo/asorty/4" },
+      "ost_zmiana": "2026-01-01T00:00:00"
+    },
+    {
+      "id": 3,
+      "kod": "5909876543210",
+      "cku": "CKU-002",
+      "nazwa": "Product Beta",
+      "stawka_vat": 2300,
+      "akcyzowy": false,
+      "typ": 0,
+      "cena_ew": 79.2,
+      "cena_det": 147.9,
+      "cena_hurt": 129.9,
+      "cena_noc": 129.9,
+      "cena_dod": 129.9,
+      "przy_sprzedazy": 1,
+      "gtu": "GTU_02",
+      "aktywny": true,
+      "masa_wl": 1.2,
+      "jm": { "id": "2", "link": "http://localhost:9999/demo/jmiary/2" },
+      "asort": { "id": "1", "link": "http://localhost:9999/demo/asorty/1" },
+      "ost_zmiana": "2026-01-15T12:00:00"
+    }
+  ]
+}

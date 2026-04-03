@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 1,
+  "start": 0,
+  "on_page": 1,
+  "links": {
+    "self": "http://localhost:9999/demo/stanymag?start=0"
+  },
+  "dane": [
+    {
+      "ilosc": 25.0,
+      "towar": { "id": "2", "link": "http://localhost:9999/demo/towary/2" },
+      "sklep": { "id": "1", "link": "http://localhost:9999/demo/sklepy/1" }
+    }
+  ]
+}

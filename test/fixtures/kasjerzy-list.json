@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 1,
+  "start": 0,
+  "on_page": 1,
+  "links": { "self": "http://localhost:9999/demo/kasjerzy?start=0" },
+  "dane": [
+    { "id": 3, "nazwisko": "Kowalski", "kod_kasjera": "KAS01", "aktywny": true }
+  ]
+}

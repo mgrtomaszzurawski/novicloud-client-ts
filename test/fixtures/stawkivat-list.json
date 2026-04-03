@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 2,
+  "start": 0,
+  "on_page": 2,
+  "links": { "self": "http://localhost:9999/demo/stawkivat?start=0" },
+  "dane": [
+    { "id": 2300, "opis": "23%", "etykieta": "A" },
+    { "id": 800, "opis": "8%", "etykieta": "B" }
+  ]
+}

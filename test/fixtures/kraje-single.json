@@ -1,0 +1,5 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "dane": { "id": 1, "nazwa": "Polska", "kod": "PL", "waluta": { "id": "1", "link": "http://localhost:9999/demo/waluty/1" } }
+}

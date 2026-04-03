@@ -1,0 +1,22 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 2,
+  "start": 0,
+  "on_page": 2,
+  "links": {
+    "self": "http://localhost:9999/demo/asorty?start=0"
+  },
+  "dane": [
+    {
+      "id": 1,
+      "nazwa": "Owoce",
+      "parent": null
+    },
+    {
+      "id": 4,
+      "nazwa": "Warzywa",
+      "parent": { "id": "1", "link": "http://localhost:9999/demo/asorty/1" }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 1,
+  "start": 0,
+  "on_page": 1,
+  "links": { "self": "http://localhost:9999/demo/sklepy?start=0" },
+  "dane": [
+    { "id": 1, "nazwa": "Sklep Glowny", "numer": 1, "miasto": "Krakow", "aktywny": true }
+  ]
+}

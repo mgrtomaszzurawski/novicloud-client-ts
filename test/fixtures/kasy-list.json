@@ -1,0 +1,20 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 1,
+  "start": 0,
+  "on_page": 1,
+  "links": {
+    "self": "http://localhost:9999/demo/kasy?start=0"
+  },
+  "dane": [
+    {
+      "id": 5,
+      "nazwa": "Kasa Glowna",
+      "numer": 1,
+      "ecr": "ECR-100",
+      "aktywny": true,
+      "sklep": { "id": "1", "link": "http://localhost:9999/demo/sklepy/1" }
+    }
+  ]
+}

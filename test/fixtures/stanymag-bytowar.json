@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "dane": [
+    {
+      "ilosc": 25.0,
+      "towar": { "id": "2", "link": "http://localhost:9999/demo/towary/2" },
+      "sklep": { "id": "1", "link": "http://localhost:9999/demo/sklepy/1" }
+    }
+  ]
+}

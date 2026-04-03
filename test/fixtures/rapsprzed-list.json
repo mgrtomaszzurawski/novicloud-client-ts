@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 1,
+  "start": 0,
+  "on_page": 1,
+  "links": { "self": "http://localhost:9999/demo/rapsprzed?start=0" },
+  "dane": [
+    { "ilosc": 150.0, "sprz_netto": 4500.0, "sprz_brutto": 5535.0, "rabat": 50.0 }
+  ]
+}

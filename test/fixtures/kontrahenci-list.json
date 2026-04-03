@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 1,
+  "start": 0,
+  "on_page": 1,
+  "links": { "self": "http://localhost:9999/demo/kontrahenci?start=0" },
+  "dane": [
+    { "id": 10, "nazwa": "Firma ABC", "nip": "1234567890", "skrot": "ABC", "miasto": "Warszawa", "aktywny": true, "dostawca": true }
+  ]
+}

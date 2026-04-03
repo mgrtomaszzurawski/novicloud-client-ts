@@ -1,0 +1,5 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "dane": { "id": 1, "nazwa": "Sklep Glowny", "numer": 1, "miasto": "Krakow", "aktywny": true }
+}

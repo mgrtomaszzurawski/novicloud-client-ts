@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "size": 1,
+  "start": 0,
+  "on_page": 1,
+  "links": { "self": "http://localhost:9999/demo/rappracy?start=0" },
+  "dane": [
+    { "czas_pracy": "08:00", "utarg": 3200.0, "gotowka": 1500.0, "karta": 1700.0, "paragony_ilosc": 45 }
+  ]
+}

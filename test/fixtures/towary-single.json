@@ -1,0 +1,25 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "dane": {
+    "id": 2,
+    "kod": "5901234567890",
+    "cku": "CKU-001",
+    "nazwa": "Product Alpha",
+    "stawka_vat": 800,
+    "akcyzowy": false,
+    "typ": 0,
+    "cena_ew": 10.63,
+    "cena_det": 16.9,
+    "cena_hurt": 129.9,
+    "cena_noc": 129.9,
+    "cena_dod": 129.9,
+    "przy_sprzedazy": 1,
+    "gtu": "GTU_01",
+    "aktywny": true,
+    "masa_wl": 0.5,
+    "jm": { "id": "2", "link": "http://localhost:9999/demo/jmiary/2" },
+    "asort": { "id": "4", "link": "http://localhost:9999/demo/asorty/4" },
+    "ost_zmiana": "2026-01-01T00:00:00"
+  }
+}

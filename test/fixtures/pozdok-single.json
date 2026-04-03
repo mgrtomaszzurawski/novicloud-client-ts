@@ -1,0 +1,5 @@
+{
+  "status": 200,
+  "status_opis": "Ok",
+  "dane": { "id": 50, "nr_pozycji": 1, "ilosc": 2.0, "stawka_vat": 2300, "w_brutto": 33.8, "w_netto": 27.48 }
+}
