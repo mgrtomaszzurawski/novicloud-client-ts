@@ -47,14 +47,14 @@ async function runList<T>(
   const count = await result.totalCount();
   log(endpoint, `count -> ${count}`);
 
-  let i = 0;
+  let index = 0;
   for await (const item of result) {
-    if (i >= LIST_LIMIT) {
+    if (index >= LIST_LIMIT) {
       log(endpoint, `... (${count - LIST_LIMIT} more)`);
       break;
     }
-    log(endpoint, `  [${i}] ${label(item)}`);
-    i++;
+    log(endpoint, `  [${index}] ${label(item)}`);
+    index++;
   }
 
   // seek test
@@ -89,12 +89,16 @@ async function safe(endpoint: string, fn: () => Promise<void>): Promise<void> {
 
 async function runTowary(client: NoviCloudClient): Promise<void> {
   const api = client.towary();
-  await runList("towary", api.list(), (t) => `id=${t.id} kod=${t.kod} nazwa=${t.nazwa}`);
+  await runList(
+    "towary",
+    api.list(),
+    (towar) => `id=${towar.id} kod=${towar.kod} nazwa=${towar.nazwa}`,
+  );
 
   // getById for first item
   const items: { id?: number }[] = [];
-  for await (const t of api.list()) {
-    items.push(t);
+  for await (const towar of api.list()) {
+    items.push(towar);
     break;
   }
   if (items[0]?.id) {
@@ -105,62 +109,78 @@ async function runTowary(client: NoviCloudClient): Promise<void> {
 
 async function runAsorty(client: NoviCloudClient): Promise<void> {
   const api = client.asorty();
-  await runList("asorty", api.list(), (a) => `id=${a.id} nazwa=${a.nazwa}`);
+  await runList("asorty", api.list(), (asorty) => `id=${asorty.id} nazwa=${asorty.nazwa}`);
 }
 
 async function runJmiary(client: NoviCloudClient): Promise<void> {
   const api = client.jmiary();
-  await runList("jmiary", api.list(), (j) => `id=${j.id} nazwa=${j.nazwa}`);
+  await runList("jmiary", api.list(), (jmiara) => `id=${jmiara.id} nazwa=${jmiara.nazwa}`);
 }
 
 async function runStawkiVat(client: NoviCloudClient): Promise<void> {
   const api = client.stawkiVat();
-  await runList("stawkivat", api.list(), (s) => `id=${s.id} nazwa=${s.nazwa} stawka=${s.stawka}`);
+  await runList(
+    "stawkivat",
+    api.list(),
+    (stawka) => `id=${stawka.id} opis=${stawka.opis} etykieta=${stawka.etykieta}`,
+  );
 }
 
 async function runWaluty(client: NoviCloudClient): Promise<void> {
   const api = client.waluty();
-  await runList("waluty", api.list(), (w) => `id=${w.id} nazwa=${w.nazwa} kurs=${w.kurs}`);
+  await runList(
+    "waluty",
+    api.list(),
+    (waluta) => `id=${waluta.id} nazwa=${waluta.nazwa} kurs=${waluta.kurs}`,
+  );
 }
 
 async function runKraje(client: NoviCloudClient): Promise<void> {
   const api = client.kraje();
-  await runList("kraje", api.list(), (k) => `id=${k.id} nazwa=${k.nazwa}`);
+  await runList("kraje", api.list(), (kraj) => `id=${kraj.id} nazwa=${kraj.nazwa}`);
 }
 
 async function runFormyPlatn(client: NoviCloudClient): Promise<void> {
   const api = client.formyPlatn();
-  await runList("formyplatn", api.list(), (f) => `id=${f.id} nazwa=${f.nazwa}`);
+  await runList("formyplatn", api.list(), (forma) => `id=${forma.id} nazwa=${forma.nazwa}`);
 }
 
 async function runKontrahenci(client: NoviCloudClient): Promise<void> {
   const api = client.kontrahenci();
-  await runList("kontrahenci", api.list(), (k) => `id=${k.id} nazwa=${k.nazwa}`);
+  await runList(
+    "kontrahenci",
+    api.list(),
+    (kontrahent) => `id=${kontrahent.id} nazwa=${kontrahent.nazwa}`,
+  );
 }
 
 async function runSklepy(client: NoviCloudClient): Promise<void> {
   const api = client.sklepy();
-  await runList("sklepy", api.list(), (s) => `id=${s.id} nazwa=${s.nazwa}`);
+  await runList("sklepy", api.list(), (sklep) => `id=${sklep.id} nazwa=${sklep.nazwa}`);
 }
 
 async function runKasy(client: NoviCloudClient): Promise<void> {
   const api = client.kasy();
-  await runList("kasy", api.list(), (k) => `id=${k.id} nazwa=${k.nazwa}`);
+  await runList("kasy", api.list(), (kasa) => `id=${kasa.id} nazwa=${kasa.nazwa}`);
 }
 
 async function runKasjerzy(client: NoviCloudClient): Promise<void> {
   const api = client.kasjerzy();
-  await runList("kasjerzy", api.list(), (k) => `id=${k.id}`);
+  await runList("kasjerzy", api.list(), (kasjer) => `id=${kasjer.id} nazwisko=${kasjer.nazwisko}`);
 }
 
 async function runDokumenty(client: NoviCloudClient): Promise<void> {
   const api = client.dokumenty();
-  await runList("dokumenty", api.list(), (d) => `id=${d.id} nrDok=${d.nrDok}`);
+  await runList("dokumenty", api.list(), (dokument) => `id=${dokument.id} nrDok=${dokument.nrDok}`);
 }
 
 async function runPozdok(client: NoviCloudClient): Promise<void> {
   const api = client.pozdok();
-  await runList("pozdok", api.list(), (p) => `id=${p.id}`);
+  await runList(
+    "pozdok",
+    api.list(),
+    (pozycja) => `id=${pozycja.id} nrPozycji=${pozycja.nrPozycji}`,
+  );
 }
 
 async function runStanyMag(client: NoviCloudClient): Promise<void> {
@@ -168,13 +188,13 @@ async function runStanyMag(client: NoviCloudClient): Promise<void> {
   await runList(
     "stanymag",
     api.list(),
-    (s) => `towar=${s.towar?.id} sklep=${s.sklep?.id} ilosc=${s.ilosc}`,
+    (stan) => `towar=${stan.towar?.id} sklep=${stan.sklep?.id} ilosc=${stan.ilosc}`,
   );
 }
 
 async function runSprzedaz(client: NoviCloudClient): Promise<void> {
   const api = client.sprzedaz();
-  await runList("sprzedaz", api.list(), (s) => `id=${s.id}`);
+  await runList("sprzedaz", api.list(), (sprzedaz) => `id=${sprzedaz.id} nrDok=${sprzedaz.nrDok}`);
 }
 
 async function runRapSprzed(client: NoviCloudClient): Promise<void> {
@@ -182,7 +202,7 @@ async function runRapSprzed(client: NoviCloudClient): Promise<void> {
   await runList(
     "rapsprzed",
     api.list({ grupowanie: "towar" }),
-    (r) => `${JSON.stringify(r).slice(0, 80)}`,
+    (raport) => `ilosc=${raport.ilosc} sprzBrutto=${raport.sprzBrutto} rabat=${raport.rabat}`,
   );
 }
 
@@ -191,13 +211,13 @@ async function runRapPracy(client: NoviCloudClient): Promise<void> {
   await runList(
     "rappracy",
     api.list({ grupowanie: "sklep" }),
-    (r) => `${JSON.stringify(r).slice(0, 80)}`,
+    (raport) => `utarg=${raport.utarg} gotowka=${raport.gotowka} paragony=${raport.paragonyIlosc}`,
   );
 }
 
 async function runKartyLoj(client: NoviCloudClient): Promise<void> {
   const api = client.kartyLoj();
-  await runList("kartyloj", api.list(), (k) => `kod=${k.kod} posiadacz=${k.posiadacz}`);
+  await runList("kartyloj", api.list(), (karta) => `kod=${karta.kod} posiadacz=${karta.posiadacz}`);
 }
 
 // ---------------------------------------------------------------------------

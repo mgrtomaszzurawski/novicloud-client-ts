@@ -18,7 +18,7 @@ describe("RapPracyClient integration (report-only)", () => {
   it("list returns report items", async () => {
     server.use(http.get(`${BASE}/${ACC}/rappracy`, () => HttpResponse.json(listJson)));
     const items: unknown[] = [];
-    for await (const i of client().rapPracy().list()) items.push(i);
+    for await (const item of client().rapPracy().list()) items.push(item);
     expect(items).toHaveLength(1);
     const first = items[0] as Record<string, unknown>;
     expect((first.sklep as Record<string, unknown>).id).toBe("1");

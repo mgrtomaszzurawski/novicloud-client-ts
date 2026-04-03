@@ -21,7 +21,7 @@ describe("FormyPlatnClient integration (soft-delete CRUD)", () => {
   it("list returns items", async () => {
     server.use(http.get(`${BASE}/${ACC}/formyplatn`, () => HttpResponse.json(listJson)));
     const items: unknown[] = [];
-    for await (const i of client().formyPlatn().list()) items.push(i);
+    for await (const item of client().formyPlatn().list()) items.push(item);
     expect(items).toHaveLength(1);
     const first = items[0] as Record<string, unknown>;
     expect(first.id).toBe(1);

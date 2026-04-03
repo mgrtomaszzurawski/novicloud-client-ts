@@ -21,7 +21,7 @@ describe("JmiaryClient integration (hard-delete CRUD)", () => {
   it("list returns items", async () => {
     server.use(http.get(`${BASE}/${ACC}/jmiary`, () => HttpResponse.json(listJson)));
     const items: unknown[] = [];
-    for await (const i of client().jmiary().list()) items.push(i);
+    for await (const item of client().jmiary().list()) items.push(item);
     expect(items).toHaveLength(2);
     const first = items[0] as Record<string, unknown>;
     expect(first.id).toBe(1);

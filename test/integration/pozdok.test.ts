@@ -19,7 +19,7 @@ describe("PozdokClient integration (read-only)", () => {
   it("list returns items", async () => {
     server.use(http.get(`${BASE}/${ACC}/pozdok`, () => HttpResponse.json(listJson)));
     const items: unknown[] = [];
-    for await (const i of client().pozdok().list()) items.push(i);
+    for await (const item of client().pozdok().list()) items.push(item);
     expect(items).toHaveLength(1);
     const first = items[0] as Record<string, unknown>;
     expect(first.id).toBe(50);

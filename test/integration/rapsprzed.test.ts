@@ -18,7 +18,7 @@ describe("RapSprzedClient integration (report-only)", () => {
   it("list returns report items", async () => {
     server.use(http.get(`${BASE}/${ACC}/rapsprzed`, () => HttpResponse.json(listJson)));
     const items: unknown[] = [];
-    for await (const i of client().rapSprzed().list()) items.push(i);
+    for await (const item of client().rapSprzed().list()) items.push(item);
     expect(items).toHaveLength(1);
     const first = items[0] as Record<string, unknown>;
     expect((first.towar as Record<string, unknown>).id).toBe("2");

@@ -124,10 +124,10 @@ describe("PagedResult", () => {
     const result = PagedResult.create<string, MockPage>({
       firstPage: async () => ({ size: 1, onPage: 1, links: null, dane: ["a"] }),
       urlFetch: async () => ({ size: 1, onPage: 1, links: null, dane: ["a"] }),
-      dataExtractor: (p) => p.dane,
+      dataExtractor: (page) => page.dane,
       selfLinkExtractor: () => undefined,
-      sizeExtractor: (p) => p.size,
-      onPageExtractor: (p) => p.onPage,
+      sizeExtractor: (page) => page.size,
+      onPageExtractor: (page) => page.onPage,
     });
 
     await expect(result.fetchFrom(0)).rejects.toThrow("server did not return a self link");
@@ -208,7 +208,7 @@ describe("PagedResult", () => {
     const result = PagedResult.create<string, MockPage>({
       firstPage: async () => ({ size: -1, onPage: -1, links: null, dane: ["a", "b"] }),
       urlFetch: async () => ({ size: -1, onPage: -1, links: null, dane: [] }),
-      dataExtractor: (p) => p.dane,
+      dataExtractor: (page) => page.dane,
       selfLinkExtractor: () => undefined,
       sizeExtractor: () => -1,
       onPageExtractor: () => -1,

@@ -21,7 +21,7 @@ describe("SklepyClient integration (soft-delete CRUD)", () => {
   it("list returns items", async () => {
     server.use(http.get(`${BASE}/${ACC}/sklepy`, () => HttpResponse.json(listJson)));
     const items: unknown[] = [];
-    for await (const i of client().sklepy().list()) items.push(i);
+    for await (const item of client().sklepy().list()) items.push(item);
     expect(items).toHaveLength(1);
     const first = items[0] as Record<string, unknown>;
     expect(first.id).toBe(1);
