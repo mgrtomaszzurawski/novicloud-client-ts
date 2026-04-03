@@ -1,0 +1,171 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+sklepCollection:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+  get:
+    summary: List shops
+    operationId: listSklepy
+    tags:
+      - Sklepy
+    parameters:
+      - $ref: '../openapi.yaml#/components/parameters/StartQuery'
+      - $ref: '../openapi.yaml#/components/parameters/ContentQuery'
+      - $ref: '../openapi.yaml#/components/parameters/FtsQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyNazwaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyNipQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepySkrotQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyNumerQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyUlicaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyNrDomuQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyNrLokuluQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyKodPocztQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyPocztaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyMiastoQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyTelefonQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyEmailQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyKrajIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SklepyAktywnyQuery'
+    responses:
+      '200':
+        description: Shop collection response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseSklepyList'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  post:
+    summary: Create shop
+    operationId: createSklep
+    tags:
+      - Sklepy
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/Sklep'
+    responses:
+      '201':
+        description: Resource created.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseCreated'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  put:
+    summary: Update shop (id in body)
+    operationId: updateSklepy
+    tags:
+      - Sklepy
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/Sklep'
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+
+sklepById:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+    - $ref: '../openapi.yaml#/components/parameters/IdPath'
+  get:
+    summary: Get shop by id
+    operationId: getSklepById
+    tags:
+      - Sklepy
+    responses:
+      '200':
+        description: Single shop response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseSklep'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  put:
+    summary: Update shop by id
+    operationId: updateSklepById
+    tags:
+      - Sklepy
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/Sklep'
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  delete:
+    summary: Delete shop by id
+    operationId: deleteSklep
+    tags:
+      - Sklepy
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'

@@ -1,0 +1,102 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+RapSprzedDataPoczQuery:
+  name: data_pocz
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Report start date in yyyy-MM-dd format. Defaults to 7 days ago.
+
+RapSprzedDataKoncQuery:
+  name: data_konc
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Report end date in yyyy-MM-dd format. Defaults to current date.
+
+RapSprzedGrupowanieQuery:
+  name: grupowanie
+  in: query
+  required: false
+  schema:
+    type: string
+    enum:
+      - towar
+      - asort
+      - sklep
+      - kasa
+      - kasjer
+      - kontr
+      - kartarab
+      - formaplatn
+  description: Grouping dimension. Omit for a single summary record.
+
+RapSprzedSkladnikiQuery:
+  name: skladniki
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Comma-separated document types to include (1=receipts w/o NIP, 2=receipts w/NIP, 3=invoices to receipts, 4=fiscal invoices, 5=receipt returns, 6=fiscal invoice corrections, 7=own invoices, 8=own invoice corrections). Default 1,2,4,5,6,7,8.
+
+RapSprzedTowarIdQuery:
+  name: towar.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List filter on product id (when grupowanie=towar).
+
+RapSprzedAsortIdQuery:
+  name: asort.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List filter on assortment id (when grupowanie=asort).
+
+RapSprzedSklepIdQuery:
+  name: sklep.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List filter on shop id (when grupowanie=sklep).
+
+RapSprzedKasaIdQuery:
+  name: kasa.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List filter on cash register id (when grupowanie=kasa).
+
+RapSprzedKasjerIdQuery:
+  name: kasjer.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List filter on cashier id (when grupowanie=kasjer).
+
+RapSprzedKontrahentIdQuery:
+  name: kontrahent.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List filter on counterparty id (when grupowanie=kontr).
+
+RapSprzedFormaPlatnIdQuery:
+  name: forma_platn.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List filter on payment method id (when grupowanie=formaplatn).

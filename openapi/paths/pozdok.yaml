@@ -1,0 +1,72 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+pozdokCollection:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+  get:
+    summary: List document line items
+    operationId: listPozdok
+    tags:
+      - Pozdok
+    parameters:
+      - $ref: '../openapi.yaml#/components/parameters/StartQuery'
+      - $ref: '../openapi.yaml#/components/parameters/ContentQuery'
+      - $ref: '../openapi.yaml#/components/parameters/FtsQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokDokumentIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokDokumentTypDokQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokDokumentDataWystawieniaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokDokumentDataWplywuQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokDokumentDataWykonaniaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokDokumentNrDokQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokDokumentKontrahentIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokDokumentPlatnikIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokDokumentSklepIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokDokumentKasaIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokDokumentKasjerIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokTowarIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/PozdokNrPozycjiQuery'
+    responses:
+      '200':
+        description: Document line item collection response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponsePozdokList'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+
+pozdokById:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+    - $ref: '../openapi.yaml#/components/parameters/IdPath'
+  get:
+    summary: Get document line item by id
+    operationId: getPozdokById
+    tags:
+      - Pozdok
+    responses:
+      '200':
+        description: Single document line item response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponsePozycjaDokumentu'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'

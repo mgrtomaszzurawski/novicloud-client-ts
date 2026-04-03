@@ -1,0 +1,158 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+formaPlatnCollection:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+  get:
+    summary: List payment methods
+    operationId: listFormyPlatn
+    tags:
+      - FormyPlatn
+    parameters:
+      - $ref: '../openapi.yaml#/components/parameters/StartQuery'
+      - $ref: '../openapi.yaml#/components/parameters/ContentQuery'
+      - $ref: '../openapi.yaml#/components/parameters/FormyPlatnIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/FormyPlatnNazwaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/FormyPlatnTypQuery'
+    responses:
+      '200':
+        description: Payment method collection response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseFormyPlatnList'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  post:
+    summary: Create payment method
+    operationId: createFormaPlatn
+    tags:
+      - FormyPlatn
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/FormaPlatn'
+    responses:
+      '201':
+        description: Resource created.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseCreated'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  put:
+    summary: Update payment method (id in body)
+    operationId: updateFormyPlatn
+    tags:
+      - FormyPlatn
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/FormaPlatn'
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+
+formaPlatnById:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+    - $ref: '../openapi.yaml#/components/parameters/IdPath'
+  get:
+    summary: Get payment method by id
+    operationId: getFormaPlatnById
+    tags:
+      - FormyPlatn
+    responses:
+      '200':
+        description: Single payment method response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseFormaPlatn'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  put:
+    summary: Update payment method by id
+    operationId: updateFormaPlatnById
+    tags:
+      - FormyPlatn
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/FormaPlatn'
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  delete:
+    summary: Delete payment method by id
+    operationId: deleteFormaPlatn
+    tags:
+      - FormyPlatn
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'

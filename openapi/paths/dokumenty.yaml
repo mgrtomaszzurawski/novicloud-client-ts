@@ -1,0 +1,71 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+dokumentCollection:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+  get:
+    summary: List documents
+    operationId: listDokumenty
+    tags:
+      - Dokumenty
+    parameters:
+      - $ref: '../openapi.yaml#/components/parameters/StartQuery'
+      - $ref: '../openapi.yaml#/components/parameters/ContentQuery'
+      - $ref: '../openapi.yaml#/components/parameters/FtsQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentyIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentyTypDokQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentyDataWystawieniaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentyDataWplywuQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentyDataWykonaniaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentyNrDokQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentySklepIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentySklepOdbIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentyKontrahentIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentyPlatnikIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentyKasaIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentyKasjerIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/DokumentyStornoQuery'
+    responses:
+      '200':
+        description: Document collection response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseDokumentyList'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+
+dokumentById:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+    - $ref: '../openapi.yaml#/components/parameters/IdPath'
+  get:
+    summary: Get document by id
+    operationId: getDokumentById
+    tags:
+      - Dokumenty
+    responses:
+      '200':
+        description: Single document response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseDokument'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'

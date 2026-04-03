@@ -1,0 +1,109 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+DokumentyIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id.
+
+DokumentyTypDokQuery:
+  name: typ_dok
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for document type code.
+
+DokumentyDataWystawieniaQuery:
+  name: data_wystawienia
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for issue date/time (e.g. min2017-05-20, max2017-05-25T23:59:59).
+
+DokumentyDataWplywuQuery:
+  name: data_wplywu
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for supplier receipt date.
+
+DokumentyDataWykonaniaQuery:
+  name: data_wykonania
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for execution date.
+
+DokumentyNrDokQuery:
+  name: nr_dok
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for document number (supports ~ wildcard).
+
+DokumentySklepIdQuery:
+  name: sklep.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on linked shop id.
+
+DokumentySklepOdbIdQuery:
+  name: sklep_odb.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on target shop id (MM documents only).
+
+DokumentyKontrahentIdQuery:
+  name: kontrahent.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on linked counterparty id (null for no counterparty, maxnull for any counterparty).
+
+DokumentyPlatnikIdQuery:
+  name: platnik.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on linked payer id.
+
+DokumentyKasaIdQuery:
+  name: kasa.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on linked cash register id.
+
+DokumentyKasjerIdQuery:
+  name: kasjer.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on linked cashier id.
+
+DokumentyStornoQuery:
+  name: storno
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Storno flag filter (cash documents only).

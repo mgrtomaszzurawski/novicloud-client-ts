@@ -1,0 +1,188 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+Towar:
+  type: object
+  description: Product resource.
+  required:
+    - kod
+    - nazwa
+  properties:
+    id:
+      type: integer
+      format: int64
+    nazwa:
+      type: string
+    kod:
+      type: string
+    cku:
+      type: string
+      description: Optional CKU code.
+    kody_dod:
+      type: array
+      items:
+        $ref: '#/TowarKodDodatkowy'
+    stawka_vat:
+      type: integer
+      format: int32
+      description: VAT rate in hundredths (e.g., 2300 for 23%, or -1 for exempt).
+    akcyzowy:
+      type: boolean
+      description: True if excise good.
+    typ:
+      type: integer
+      format: int32
+      description: Product type code.
+      enum:
+        - 0
+        - 2
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+    cena_ew:
+      type: number
+      format: double
+      description: Net inventory price.
+    cena_det:
+      type: number
+      format: double
+      description: Gross retail price.
+    cena_hurt:
+      type: number
+      format: double
+      description: Gross wholesale price.
+    cena_noc:
+      type: number
+      format: double
+      description: Gross night price.
+    cena_dod:
+      type: number
+      format: double
+      description: Gross additional price.
+    przy_sprzedazy:
+      type: integer
+      format: int32
+      description: Sales price behavior.
+      enum:
+        - 0
+        - 1
+        - 2
+    gtu:
+      type: string
+      description: Optional GTU code.
+    ceny_w_sklepach:
+      type: array
+      items:
+        $ref: '#/TowarCenaWSklepie'
+    pkwiu:
+      type: string
+    masa_wl:
+      type: number
+      format: double
+    aktywny:
+      type: boolean
+    jm:
+      $ref: './common.yaml#/Link'
+    asort:
+      $ref: './common.yaml#/Link'
+    opis_1:
+      type: string
+    opis_2:
+      type: string
+    opis_3:
+      type: string
+    opis_4:
+      type: string
+    opis_5:
+      type: string
+    skladniki:
+      type: array
+      items:
+        $ref: '#/TowarSkladnik'
+    ost_zmiana:
+      type: string
+      format: date-time
+      description: Last modification timestamp without timezone offset.
+
+TowarKodDodatkowy:
+  type: object
+  description: Additional barcode information.
+  properties:
+    kod:
+      type: string
+    ile_w_opak:
+      type: number
+      format: double
+    poziom_cen:
+      type: integer
+      format: int32
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+
+TowarCenaWSklepie:
+  type: object
+  description: Store-specific pricing details.
+  properties:
+    cena_ew:
+      type: number
+      format: double
+    cena_det:
+      type: number
+      format: double
+    cena_hurt:
+      type: number
+      format: double
+    cena_noc:
+      type: number
+      format: double
+    cena_dod:
+      type: number
+      format: double
+    przy_sprzedazy:
+      type: integer
+      format: int32
+
+TowarSkladnik:
+  type: object
+  description: Bundle component group for product type 5.
+  properties:
+    nazwa:
+      type: string
+    cena:
+      type: number
+      format: double
+    obowiazkowy:
+      type: boolean
+    wybor_wielu_tow:
+      type: boolean
+    rozne_ceny:
+      type: boolean
+    towary:
+      type: array
+      items:
+        $ref: '#/TowarSkladnikTowar'
+
+TowarSkladnikTowar:
+  type: object
+  description: Product item inside a bundle component.
+  properties:
+    towar:
+      $ref: './common.yaml#/Link'
+    ilosc:
+      type: number
+      format: double
+    cena_z_karty_tow:
+      type: boolean
+    cena:
+      type: number
+      format: double
+    domyslny:
+      type: boolean

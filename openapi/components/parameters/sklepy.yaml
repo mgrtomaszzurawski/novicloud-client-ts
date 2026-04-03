@@ -1,0 +1,125 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+SklepyIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id.
+
+SklepyNazwaQuery:
+  name: nazwa
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for shop name (supports ~ wildcard).
+
+SklepyNipQuery:
+  name: nip
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for NIP number.
+
+SklepySkrotQuery:
+  name: skrot
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for short name.
+
+SklepyNumerQuery:
+  name: numer
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for shop number.
+
+SklepyUlicaQuery:
+  name: ulica
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for street.
+
+SklepyNrDomuQuery:
+  name: nr_domu
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for house number.
+
+SklepyNrLokuluQuery:
+  name: nr_lokalu
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for apartment number.
+
+SklepyKodPocztQuery:
+  name: kod_poczt
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for postal code.
+
+SklepyPocztaQuery:
+  name: poczta
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for post office.
+
+SklepyMiastoQuery:
+  name: miasto
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for city.
+
+SklepyTelefonQuery:
+  name: telefon
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for phone number.
+
+SklepyEmailQuery:
+  name: email
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for email address.
+
+SklepyKrajIdQuery:
+  name: kraj.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on linked country id.
+
+SklepyAktywnyQuery:
+  name: aktywny
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Active flag filter.

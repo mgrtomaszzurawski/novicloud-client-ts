@@ -1,0 +1,33 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+StanMag:
+  type: object
+  description: Inventory stock level resource (product-shop pair).
+  properties:
+    towar:
+      $ref: './common.yaml#/Link'
+    sklep:
+      $ref: './common.yaml#/Link'
+    ilosc:
+      type: number
+      format: double
+    w_c_zak_netto:
+      type: number
+      format: double
+      description: Stock value at net purchase price (requires warehouse management option).
+    w_c_zak_brutto:
+      type: number
+      format: double
+      description: Stock value at gross purchase price (requires warehouse management option).
+    w_c_sprzed_netto:
+      type: number
+      format: double
+      description: Stock value at net selling price (requires warehouse management option).
+    w_c_sprzed_brutto:
+      type: number
+      format: double
+      description: Stock value at gross selling price (requires warehouse management option).

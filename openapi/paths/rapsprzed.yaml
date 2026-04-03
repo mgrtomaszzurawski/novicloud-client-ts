@@ -1,0 +1,43 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+rapSprzedCollection:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+  get:
+    summary: Get sales summary report
+    operationId: listRapSprzed
+    tags:
+      - RapSprzed
+    parameters:
+      - $ref: '../openapi.yaml#/components/parameters/StartQuery'
+      - $ref: '../openapi.yaml#/components/parameters/ContentQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapSprzedDataPoczQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapSprzedDataKoncQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapSprzedGrupowanieQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapSprzedSkladnikiQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapSprzedTowarIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapSprzedAsortIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapSprzedSklepIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapSprzedKasaIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapSprzedKasjerIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapSprzedKontrahentIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapSprzedFormaPlatnIdQuery'
+    responses:
+      '200':
+        description: Sales report response. First record is always a totals summary.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseRapSprzedList'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'

@@ -1,0 +1,77 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+sprzedazCollection:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+  get:
+    summary: List sales records
+    operationId: listSprzedaz
+    tags:
+      - Sprzedaz
+    parameters:
+      - $ref: '../openapi.yaml#/components/parameters/StartQuery'
+      - $ref: '../openapi.yaml#/components/parameters/ContentQuery'
+      - $ref: '../openapi.yaml#/components/parameters/FtsQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazDataQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazNrDokQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazTypDokQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazNrSystemowyQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazNrFiskalnyQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazNrRapDobQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazIloscQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazCenaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazCenaPrzedRabQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazStawkaVatQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazBruttoQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazPodatekQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazRabatQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazTowarIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazSklepIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazKasaIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazKasjerIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/SprzedazKontrahentIdQuery'
+    responses:
+      '200':
+        description: Sales record collection response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseSprzedazList'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+
+sprzedazById:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+    - $ref: '../openapi.yaml#/components/parameters/IdPath'
+  get:
+    summary: Get sales record by id
+    operationId: getSprzedazById
+    tags:
+      - Sprzedaz
+    responses:
+      '200':
+        description: Single sales record response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseSprzedaz'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'

@@ -1,0 +1,77 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+KartyLojKodQuery:
+  name: kod
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for loyalty card number (supports ~ wildcard).
+
+KartyLojNazwiskoImieQuery:
+  name: nazwisko_imie
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for loyalty customer name (supports ~ wildcard).
+
+KartyLojPosiadaczQuery:
+  name: posiadacz
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for card holder description.
+
+KartyLojTelefonQuery:
+  name: telefon
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for phone number.
+
+KartyLojEmailQuery:
+  name: email
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for email address.
+
+KartyLojWaznaOdQuery:
+  name: wazna_od
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for card validity start date.
+
+KartyLojWaznaDoQuery:
+  name: wazna_do
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for card validity end date.
+
+KartyLojUniewaznionoQuery:
+  name: uniewazniono
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for card invalidation date.
+
+KartyLojKodPath:
+  name: kod
+  in: path
+  required: true
+  schema:
+    type: string
+  description: Loyalty card number (resource identifier).

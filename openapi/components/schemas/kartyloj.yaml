@@ -1,0 +1,70 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+KartaLojalnosciowa:
+  type: object
+  description: Loyalty card resource. The 'kod' field is both the card number and the resource ID.
+  properties:
+    kod:
+      type: string
+      description: Loyalty card number (also used as path ID in /{kod} requests).
+    typ:
+      type: integer
+      format: int32
+      description: Card type number (0-99), used for discount rule classification.
+    wazna_od:
+      type: string
+      format: date-time
+      description: Card validity start date.
+    wazna_do:
+      type: string
+      format: date-time
+      description: Card validity end date.
+    posiadacz:
+      type: string
+      description: Card holder description (used in PC-Loyalty reports).
+    opis_1:
+      type: string
+    opis_2:
+      type: string
+    uniewazniono:
+      type: string
+      format: date-time
+      description: When present in PUT, blocks the card. When absent, unblocks a previously blocked card.
+    nazwisko_imie:
+      type: string
+      description: Loyalty customer full name. Required for POST.
+    skrot:
+      type: string
+    telefon:
+      type: string
+      description: Loyalty customer phone. Required for POST if email is absent.
+    email:
+      type: string
+      description: Loyalty customer email. Required for POST if telefon is absent.
+    miejscowosc:
+      type: string
+    ulica:
+      type: string
+    nr_domu:
+      type: string
+    nr_lokalu:
+      type: string
+    kod_poczt:
+      type: string
+    poczta:
+      type: string
+    nip:
+      type: string
+    data_urodz:
+      type: string
+      format: date
+    plec:
+      type: string
+      description: Gender (K=female, M=male).
+      enum:
+        - K
+        - M

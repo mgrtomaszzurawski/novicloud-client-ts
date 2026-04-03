@@ -1,0 +1,168 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+stanMagCollection:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+  get:
+    summary: List inventory stock levels (all product-shop pairs)
+    operationId: listStanyMag
+    tags:
+      - StanyMag
+    parameters:
+      - $ref: '../openapi.yaml#/components/parameters/StartQuery'
+      - $ref: '../openapi.yaml#/components/parameters/ContentQuery'
+      - $ref: '../openapi.yaml#/components/parameters/StanyMagTowarIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/StanyMagSklepIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/StanyMagNaDzienQuery'
+    responses:
+      '200':
+        description: Stock level collection response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseStanyMagList'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  put:
+    summary: Update stock level (towar.id and sklep.id in body)
+    operationId: updateStanMag
+    tags:
+      - StanyMag
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/StanMag'
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+
+stanMagByTowar:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+    - $ref: '../openapi.yaml#/components/parameters/StanyMagIdTowaruPath'
+  get:
+    summary: List stock levels for a specific product
+    operationId: listStanyMagByTowar
+    tags:
+      - StanyMag
+    parameters:
+      - $ref: '../openapi.yaml#/components/parameters/StanyMagNaDzienQuery'
+    responses:
+      '200':
+        description: Stock level collection response for a product.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseStanyMagList'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  put:
+    summary: Update stock level for a specific product (sklep.id in body)
+    operationId: updateStanMagByTowar
+    tags:
+      - StanyMag
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/StanMag'
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+
+stanMagByTowarAndSklep:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+    - $ref: '../openapi.yaml#/components/parameters/StanyMagIdTowaruPath'
+    - $ref: '../openapi.yaml#/components/parameters/StanyMagIdSklepuPath'
+  get:
+    summary: Get stock level for a specific product-shop pair
+    operationId: getStanMagByTowarAndSklep
+    tags:
+      - StanyMag
+    parameters:
+      - $ref: '../openapi.yaml#/components/parameters/StanyMagNaDzienQuery'
+    responses:
+      '200':
+        description: Single stock level response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseStanMag'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  put:
+    summary: Update stock level for a specific product-shop pair
+    operationId: updateStanMagByTowarAndSklep
+    tags:
+      - StanyMag
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/StanMag'
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'

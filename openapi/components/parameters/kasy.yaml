@@ -1,0 +1,53 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+KasyIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id.
+
+KasyNazwaQuery:
+  name: nazwa
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for cash register name (supports ~ wildcard).
+
+KasyNumerQuery:
+  name: numer
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for cash register number.
+
+KasyEcrQuery:
+  name: ecr
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for ECR device number.
+
+KasyOstatniaSyncQuery:
+  name: ostatnia_sync
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for last sync date/time.
+
+KasyAktywnyQuery:
+  name: aktywny
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Active flag filter.

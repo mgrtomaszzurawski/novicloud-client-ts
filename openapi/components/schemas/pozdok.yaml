@@ -1,0 +1,92 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+PozycjaDokumentu:
+  type: object
+  description: Document line item resource.
+  properties:
+    id:
+      type: integer
+      format: int64
+    dokument:
+      $ref: './common.yaml#/Link'
+    towar:
+      $ref: './common.yaml#/Link'
+    nr_pozycji:
+      type: integer
+      format: int32
+    ilosc:
+      type: number
+      format: double
+    ilosc_pocz:
+      type: number
+      format: double
+      description: Original quantity (inventory documents only).
+    stawka_vat:
+      type: integer
+      format: int32
+    c_przed_rab_netto:
+      type: number
+      format: double
+    c_przed_rab_brutto:
+      type: number
+      format: double
+    c_po_rab_netto:
+      type: number
+      format: double
+    c_po_rab_brutto:
+      type: number
+      format: double
+    rabat_kwota:
+      type: number
+      format: double
+    w_netto:
+      type: number
+      format: double
+    w_podatek:
+      type: number
+      format: double
+    w_brutto:
+      type: number
+      format: double
+    org_ilosc:
+      type: number
+      format: double
+    org_c_przed_rab_netto:
+      type: number
+      format: double
+    org_c_przed_rab_brutto:
+      type: number
+      format: double
+    org_c_po_rab_netto:
+      type: number
+      format: double
+    org_c_po_rab_brutto:
+      type: number
+      format: double
+    org_rabat_kwota:
+      type: number
+      format: double
+    org_w_netto:
+      type: number
+      format: double
+    org_w_podatek:
+      type: number
+      format: double
+    org_w_brutto:
+      type: number
+      format: double
+    rozl_netto:
+      type: number
+      format: double
+    rozl_podatek:
+      type: number
+      format: double
+    rozl_brutto:
+      type: number
+      format: double
+    storno:
+      type: boolean

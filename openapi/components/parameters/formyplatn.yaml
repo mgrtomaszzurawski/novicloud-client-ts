@@ -1,0 +1,29 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+FormyPlatnIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id.
+
+FormyPlatnNazwaQuery:
+  name: nazwa
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for payment method name.
+
+FormyPlatnTypQuery:
+  name: typ
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for payment type (0=cash, 1=credit card, 2=debit card, 3=check, 4=voucher, 5=transfer, 6=other).

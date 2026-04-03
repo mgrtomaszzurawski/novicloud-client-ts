@@ -1,0 +1,22 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+Kraj:
+  type: object
+  description: Country resource.
+  required:
+    - nazwa
+    - kod
+  properties:
+    id:
+      type: integer
+      format: int64
+    nazwa:
+      type: string
+    kod:
+      type: string
+    waluta:
+      $ref: './common.yaml#/Link'

@@ -1,0 +1,370 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+ApiResponseEmpty:
+  description: Response envelope without data payload.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+
+ApiResponseError:
+  description: Response envelope with validation error details.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: './common.yaml#/ErrorDetails'
+
+ApiResponseCreated:
+  description: Response envelope with a link to a created resource.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: './common.yaml#/Link'
+
+ApiResponseTowar:
+  description: Response envelope with a single product.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/Towar'
+
+ApiResponseTowaryList:
+  description: Response envelope with a list of products.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/Towar'
+
+ApiResponseAsorty:
+  description: Response envelope with a single assortment.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/Asorty'
+
+ApiResponseAsortyList:
+  description: Response envelope with a list of assortments.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/Asorty'
+
+ApiResponseJmiary:
+  description: Response envelope with a single unit of measure.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/Jmiary'
+
+ApiResponseJmiaryList:
+  description: Response envelope with a list of units of measure.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/Jmiary'
+
+ApiResponseStawkaVat:
+  description: Response envelope with a single VAT rate.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/StawkaVat'
+
+ApiResponseStawkiVatList:
+  description: Response envelope with a list of VAT rates.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/StawkaVat'
+
+ApiResponseWaluta:
+  description: Response envelope with a single currency.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/Waluta'
+
+ApiResponseWalutyList:
+  description: Response envelope with a list of currencies.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/Waluta'
+
+ApiResponseKraj:
+  description: Response envelope with a single country.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/Kraj'
+
+ApiResponseKrajeList:
+  description: Response envelope with a list of countries.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/Kraj'
+
+ApiResponseFormaPlatn:
+  description: Response envelope with a single payment method.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/FormaPlatn'
+
+ApiResponseFormyPlatnList:
+  description: Response envelope with a list of payment methods.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/FormaPlatn'
+
+ApiResponseKontrahent:
+  description: Response envelope with a single counterparty.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/Kontrahent'
+
+ApiResponseKontrahenciList:
+  description: Response envelope with a list of counterparties.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/Kontrahent'
+
+ApiResponseSklep:
+  description: Response envelope with a single shop.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/Sklep'
+
+ApiResponseSklepyList:
+  description: Response envelope with a list of shops.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/Sklep'
+
+ApiResponseKasa:
+  description: Response envelope with a single cash register.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/Kasa'
+
+ApiResponseKasyList:
+  description: Response envelope with a list of cash registers.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/Kasa'
+
+ApiResponseKasjer:
+  description: Response envelope with a single cashier.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/Kasjer'
+
+ApiResponseKasjerzyList:
+  description: Response envelope with a list of cashiers.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/Kasjer'
+
+ApiResponseDokument:
+  description: Response envelope with a single document.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/Dokument'
+
+ApiResponseDokumentyList:
+  description: Response envelope with a list of documents.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/Dokument'
+
+ApiResponsePozycjaDokumentu:
+  description: Response envelope with a single document line item.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/PozycjaDokumentu'
+
+ApiResponsePozdokList:
+  description: Response envelope with a list of document line items.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/PozycjaDokumentu'
+
+ApiResponseStanMag:
+  description: Response envelope with a single stock level.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/StanMag'
+
+ApiResponseStanyMagList:
+  description: Response envelope with a list of stock levels.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/StanMag'
+
+ApiResponseSprzedaz:
+  description: Response envelope with a single sales record.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/Sprzedaz'
+
+ApiResponseSprzedazList:
+  description: Response envelope with a list of sales records.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/Sprzedaz'
+
+ApiResponseRapSprzedList:
+  description: Response envelope with a sales summary report list.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/RaportSprzedazy'
+
+ApiResponseRapPracyList:
+  description: Response envelope with a work time report list.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/RaportPracy'
+
+ApiResponseKartaLoj:
+  description: Response envelope with a single loyalty card.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          $ref: '../../openapi.yaml#/components/schemas/KartaLojalnosciowa'
+
+ApiResponseKartyLojList:
+  description: Response envelope with a list of loyalty cards.
+  allOf:
+    - $ref: './common.yaml#/ApiResponseBase'
+    - type: object
+      properties:
+        dane:
+          type: array
+          items:
+            $ref: '../../openapi.yaml#/components/schemas/KartaLojalnosciowa'

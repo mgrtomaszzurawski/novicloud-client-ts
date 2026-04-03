@@ -1,0 +1,157 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+KontrahenciIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id.
+
+KontrahenciNazwaQuery:
+  name: nazwa
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for counterparty name (supports ~ wildcard).
+
+KontrahenciNipQuery:
+  name: nip
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for NIP number.
+
+KontrahenciSkrotQuery:
+  name: skrot
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for short name.
+
+KontrahenciUlicaQuery:
+  name: ulica
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for street.
+
+KontrahenciNrDomuQuery:
+  name: nr_domu
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for house number.
+
+KontrahenciNrLokoluQuery:
+  name: nr_lokalu
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for apartment number.
+
+KontrahenciKodPocztQuery:
+  name: kod_poczt
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for postal code.
+
+KontrahenciPocztaQuery:
+  name: poczta
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for post office.
+
+KontrahenciMiastoQuery:
+  name: miasto
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for city.
+
+KontrahenciTelefonQuery:
+  name: telefon
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for phone number.
+
+KontrahenciEmailQuery:
+  name: email
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for email address.
+
+KontrahenciKrajIdQuery:
+  name: kraj.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on linked country id.
+
+KontrahenciAktywnyQuery:
+  name: aktywny
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Active flag filter.
+
+KontrahenciDostawcaQuery:
+  name: dostawca
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Supplier flag filter.
+
+KontrahenciStalyQuery:
+  name: staly
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Regular customer flag filter.
+
+KontrahenciProducentQuery:
+  name: producent
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Producer flag filter.
+
+KontrahenciOdbiorcaQuery:
+  name: odbiorca
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Customer flag filter.
+
+KontrahenciOsobaQuery:
+  name: osoba
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Natural person flag filter.

@@ -1,0 +1,38 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+rapPracyCollection:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+  get:
+    summary: Get cashier work time report
+    operationId: listRapPracy
+    tags:
+      - RapPracy
+    parameters:
+      - $ref: '../openapi.yaml#/components/parameters/StartQuery'
+      - $ref: '../openapi.yaml#/components/parameters/ContentQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapPracyDataPoczQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapPracyDataKoncQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapPracyGrupowanieQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapPracySklepIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapPracyKasaIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/RapPracyKasjerIdQuery'
+    responses:
+      '200':
+        description: Work time report response. First record is always a totals summary.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseRapPracyList'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'

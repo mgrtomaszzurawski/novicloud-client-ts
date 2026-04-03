@@ -1,0 +1,29 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+AsortyIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id (e.g., 1,2,3 or min5 or max10).
+
+AsortyNazwaQuery:
+  name: nazwa
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for assortment name (supports ~ wildcard).
+
+AsortyParentIdQuery:
+  name: parent.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on parent assortment id.

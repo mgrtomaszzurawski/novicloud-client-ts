@@ -1,0 +1,30 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+StawkaVat:
+  type: object
+  description: VAT rate resource. The id field contains the rate in hundredths (e.g. 2300 for 23%, -1 for exempt).
+  required:
+    - id
+  properties:
+    id:
+      type: integer
+      format: int32
+      description: VAT rate in hundredths (e.g. 2300 for 23%, -1 for exempt). Also the resource ID.
+    opis:
+      type: string
+      description: VAT rate description (e.g. "23%").
+    etykieta:
+      type: string
+      description: Label character.
+      enum:
+        - A
+        - B
+        - C
+        - D
+        - E
+        - F
+        - G

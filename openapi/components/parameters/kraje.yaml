@@ -1,0 +1,37 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+KrajeIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id.
+
+KrajeNazwaQuery:
+  name: nazwa
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for country name (supports ~ wildcard).
+
+KrajeKodQuery:
+  name: kod
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for country code.
+
+KrajeWalutaIdQuery:
+  name: waluta.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on linked currency id.

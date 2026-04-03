@@ -1,0 +1,51 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+AccountNamePath:
+  name: nazwa_konta
+  in: path
+  required: true
+  schema:
+    type: string
+  description: Account name in NoviCloud.
+
+IdPath:
+  name: id
+  in: path
+  required: true
+  schema:
+    type: integer
+    format: int64
+  description: Resource identifier.
+
+StartQuery:
+  name: start
+  in: query
+  required: false
+  schema:
+    type: integer
+    format: int32
+    default: 0
+  description: Index of the first object on the page.
+
+ContentQuery:
+  name: content
+  in: query
+  required: false
+  schema:
+    type: integer
+    format: int64
+  description: >
+    Server-generated pagination session ID. Returned in pagination links (next/prev/self).
+    Do not set manually - use full URLs from response links for subsequent pages.
+
+FtsQuery:
+  name: fts
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Full-text search across text fields.

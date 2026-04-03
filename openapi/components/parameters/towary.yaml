@@ -1,0 +1,85 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+TowaryIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id (e.g., 1,2,3 or min5 or max10).
+
+TowaryNazwaQuery:
+  name: nazwa
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for product name (supports ~ wildcard).
+
+TowaryKodQuery:
+  name: kod
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for barcode.
+
+TowaryStawkaVatQuery:
+  name: stawka_vat
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for VAT rate (e.g., 2300, min500).
+
+TowaryAkcyzowyQuery:
+  name: akcyzowy
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Excise goods filter.
+
+TowaryTypQuery:
+  name: typ
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for product type.
+
+TowaryCenaDetQuery:
+  name: cena_det
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for retail price.
+
+TowaryJmIdQuery:
+  name: jm.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on related unit of measure id.
+
+TowaryAsortIdQuery:
+  name: asort.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on related assortment id.
+
+TowaryAktywnyQuery:
+  name: aktywny
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Active flag filter.

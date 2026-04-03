@@ -1,0 +1,178 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+Dokument:
+  type: object
+  description: Document resource.
+  properties:
+    id:
+      type: integer
+      format: int64
+    typ_dok:
+      type: integer
+      format: int32
+      description: >
+        Document type code.
+        Cash documents: 21=receipt, 8=return to receipt, 36=invoice to receipt, 112=fiscal invoice,
+        113=fiscal invoice correction, 54=cash in/out, 59=cancelled receipts.
+        Customer documents: 33=own invoice, 34=own invoice correction, 5=WZ, 7=customer return.
+        Supplier documents: 31=supplier invoice, 32=supplier invoice correction, 2=PZ, 4=return to supplier.
+        Warehouse documents: 14=BO, 16=inventory, 9=internal receipt, 10=internal issue, 11=MM, 23=loss.
+        Payments: 51=payment document.
+    data_wystawienia:
+      type: string
+      format: date-time
+      description: Document issue date/time.
+    data_wplywu:
+      type: string
+      format: date
+      description: Supplier document receipt date.
+    data_wykonania:
+      type: string
+      format: date
+      description: Sale or service execution date.
+    nr_dok:
+      type: string
+    karta_rabatowa:
+      type: string
+    nip_na_par:
+      type: string
+    nr_systemowy:
+      type: string
+    nr_fiskalny:
+      type: string
+    nr_rap_dobowego:
+      type: string
+    komentarz:
+      type: string
+    sklep:
+      $ref: './common.yaml#/Link'
+    sklep_odb:
+      $ref: './common.yaml#/Link'
+    kontrahent:
+      $ref: './common.yaml#/Link'
+    platnik:
+      $ref: './common.yaml#/Link'
+    kasa:
+      $ref: './common.yaml#/Link'
+    kasjer:
+      $ref: './common.yaml#/Link'
+    storno:
+      type: boolean
+    netto:
+      type: number
+      format: double
+    podatek:
+      type: number
+      format: double
+    brutto:
+      type: number
+      format: double
+    rabat:
+      type: number
+      format: double
+    rozbicie_vat:
+      type: array
+      items:
+        $ref: '#/DokumentRozbicieVat'
+    forma_platn:
+      $ref: './common.yaml#/Link'
+    termin_platn:
+      type: string
+      format: date-time
+    zaplacono:
+      type: number
+      format: double
+    platnosci:
+      type: array
+      items:
+        $ref: '#/Platnosc'
+    dotyczy:
+      $ref: './common.yaml#/Link'
+    korekty:
+      type: array
+      items:
+        $ref: './common.yaml#/Link'
+    faktury:
+      type: array
+      items:
+        $ref: './common.yaml#/Link'
+    dok_magazynowe:
+      type: array
+      items:
+        $ref: './common.yaml#/Link'
+    paragony:
+      type: array
+      items:
+        $ref: './common.yaml#/Link'
+    dok_roliczane:
+      type: array
+      items:
+        $ref: '#/DokumentRozliczane'
+    pozycje:
+      $ref: './common.yaml#/Link'
+
+DokumentRozbicieVat:
+  type: object
+  description: VAT breakdown for a document.
+  properties:
+    stawka:
+      type: integer
+      format: int32
+    netto:
+      type: number
+      format: double
+    podatek:
+      type: number
+      format: double
+    brutto:
+      type: number
+      format: double
+
+Platnosc:
+  type: object
+  description: Payment entry for a document.
+  properties:
+    forma_platnosci:
+      $ref: './common.yaml#/Link'
+    waluta:
+      $ref: './common.yaml#/Link'
+    typ_formy_platnosci:
+      type: integer
+      format: int32
+      description: Payment type (0=cash, 1=credit card, 2=debit card, 3=check, 4=voucher, 5=transfer, 6=other).
+    kod_waluty:
+      type: string
+    kurs:
+      type: number
+      format: double
+    wplata_waluta:
+      type: number
+      format: double
+    wplata_waluta_domyslna:
+      type: number
+      format: double
+    reszta_waluta:
+      type: number
+      format: double
+    reszta_waluta_domyslna:
+      type: number
+      format: double
+    dok_platnosci:
+      $ref: './common.yaml#/Link'
+    kwota:
+      type: number
+      format: double
+
+DokumentRozliczane:
+  type: object
+  description: Document settled by a payment document.
+  properties:
+    dokument:
+      $ref: './common.yaml#/Link'
+    zaplacono:
+      type: number
+      format: double

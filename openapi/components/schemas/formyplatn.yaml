@@ -1,0 +1,35 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+FormaPlatn:
+  type: object
+  description: Payment method resource.
+  required:
+    - nazwa
+    - typ
+  properties:
+    id:
+      type: integer
+      format: int64
+    nazwa:
+      type: string
+    typ:
+      type: integer
+      format: int32
+      description: Payment type (0=cash, 1=credit card, 2=debit card, 3=check, 4=voucher, 5=transfer, 6=other).
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+    reszta:
+      type: boolean
+      description: Whether change can be given in this payment method.
+    aktywny:
+      type: boolean

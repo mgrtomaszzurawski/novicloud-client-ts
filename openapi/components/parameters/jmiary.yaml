@@ -1,0 +1,29 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+JmiaryIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id.
+
+JmiaryNazwaQuery:
+  name: nazwa
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for unit of measure name (supports ~ wildcard).
+
+JmiaryPrecyzjaQuery:
+  name: precyzja
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for precision level.

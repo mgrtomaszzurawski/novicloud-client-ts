@@ -1,0 +1,71 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+RaportPracy:
+  type: object
+  description: Work time report record. The first record is always a totals record without grouping fields.
+  properties:
+    sklep:
+      $ref: './common.yaml#/Link'
+    kasa:
+      $ref: './common.yaml#/Link'
+    kasjer:
+      $ref: './common.yaml#/Link'
+    czas_pracy:
+      type: number
+      format: double
+      description: Work time in milliseconds.
+    utarg:
+      type: number
+      format: double
+    gotowka:
+      type: number
+      format: double
+    karta:
+      type: number
+      format: double
+    czek:
+      type: number
+      format: double
+    bon:
+      type: number
+      format: double
+    przelew:
+      type: number
+      format: double
+    inna:
+      type: number
+      format: double
+    paragony_ilosc:
+      type: number
+      format: double
+    paragony_wartosc:
+      type: number
+      format: double
+    paragony_pozycje:
+      type: number
+      format: double
+    faktury_ilosc:
+      type: number
+      format: double
+    faktury_wartosc:
+      type: number
+      format: double
+    faktury_pozycje:
+      type: number
+      format: double
+    storno_pozycje:
+      type: number
+      format: double
+    storno_wartosc:
+      type: number
+      format: double
+    paragony_anulowane_ilosc:
+      type: number
+      format: double
+    paragony_anulowane_wartosc:
+      type: number
+      format: double

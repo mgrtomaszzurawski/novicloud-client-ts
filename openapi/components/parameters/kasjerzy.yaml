@@ -1,0 +1,37 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+KasjerzyIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id.
+
+KasjerzyNazwiskoQuery:
+  name: nazwisko
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for cashier name (supports ~ wildcard).
+
+KasjerzyKodKasjeraQuery:
+  name: kod_kasjera
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for cashier card number.
+
+KasjerzyAktywnyQuery:
+  name: aktywny
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Active flag filter.

@@ -1,0 +1,63 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+Sprzedaz:
+  type: object
+  description: Sales record resource.
+  properties:
+    id:
+      type: integer
+      format: int64
+    data:
+      type: string
+      format: date-time
+    nr_dok:
+      type: string
+    typ_dok:
+      type: integer
+      format: int32
+      description: Document type (21=receipt, 36=invoice to receipt, 33=own invoice, 34=invoice correction, 112=fiscal invoice, 113=fiscal invoice correction).
+    nr_systemowy:
+      type: string
+    nr_fiskalny:
+      type: string
+    nr_rap_dob:
+      type: string
+    ilosc:
+      type: number
+      format: double
+    cena:
+      type: number
+      format: double
+    cena_przed_rab:
+      type: number
+      format: double
+    stawka_vat:
+      type: integer
+      format: int32
+    brutto:
+      type: number
+      format: double
+    podatek:
+      type: number
+      format: double
+    rabat:
+      type: number
+      format: double
+    towar:
+      $ref: './common.yaml#/Link'
+    sklep:
+      $ref: './common.yaml#/Link'
+    kasa:
+      $ref: './common.yaml#/Link'
+    kasjer:
+      $ref: './common.yaml#/Link'
+    kontrahent:
+      $ref: './common.yaml#/Link'
+    platnosci:
+      type: array
+      items:
+        $ref: './dokumenty.yaml#/Platnosc'

@@ -1,0 +1,77 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+Link:
+  type: object
+  description: Link to a related resource.
+  properties:
+    id:
+      type: string
+      description: Resource identifier; may be numeric or text.
+    link:
+      type: string
+      format: uri
+  required:
+    - id
+    - link
+
+PaginationLinks:
+  type: object
+  description: Pagination links for collection responses.
+  properties:
+    self:
+      type: string
+      format: uri
+    prev:
+      type: string
+      format: uri
+    next:
+      type: string
+      format: uri
+  required:
+    - self
+
+ErrorDetails:
+  type: object
+  description: Details for invalid query parameters.
+  properties:
+    par_niewlasciwe:
+      type: array
+      items:
+        type: string
+    par_bledna_wart:
+      type: array
+      items:
+        type: string
+
+ApiResponseBase:
+  type: object
+  description: Common response envelope fields.
+  properties:
+    status:
+      type: integer
+      format: int32
+    statusDescription:
+      type: string
+      x-field-extra-annotation: '@com.fasterxml.jackson.annotation.JsonAlias({"status_opis"})'
+    size:
+      type: integer
+      format: int32
+      description: Total number of objects in a collection.
+    start:
+      type: integer
+      format: int32
+      description: Index of the first object on the returned page.
+    onPage:
+      type: integer
+      format: int32
+      description: Number of objects on the returned page.
+      x-field-extra-annotation: '@com.fasterxml.jackson.annotation.JsonAlias({"on_page"})'
+    links:
+      $ref: '#/PaginationLinks'
+  required:
+    - status
+    - statusDescription

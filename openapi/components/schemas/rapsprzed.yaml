@@ -1,0 +1,65 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+RaportSprzedazy:
+  type: object
+  description: Sales summary report record. The first record is always a totals record without grouping fields.
+  properties:
+    towar:
+      $ref: './common.yaml#/Link'
+    asort:
+      $ref: './common.yaml#/Link'
+    sklep:
+      $ref: './common.yaml#/Link'
+    kasa:
+      $ref: './common.yaml#/Link'
+    kasjer:
+      $ref: './common.yaml#/Link'
+    kontrahent:
+      $ref: './common.yaml#/Link'
+    karta_rabatowa:
+      type: string
+    forma_platn:
+      $ref: './common.yaml#/Link'
+    ilosc:
+      type: number
+      format: double
+    sprz_netto:
+      type: number
+      format: double
+    sprz_brutto:
+      type: number
+      format: double
+    sprz_zak_netto:
+      type: number
+      format: double
+    sprz_zak_brutto:
+      type: number
+      format: double
+    marza_netto:
+      type: number
+      format: double
+    marza_brutto:
+      type: number
+      format: double
+    marza_proc_netto:
+      type: number
+      format: double
+    marza_proc_brutto:
+      type: number
+      format: double
+    narzut_proc_netto:
+      type: number
+      format: double
+    narzut_proc_brutto:
+      type: number
+      format: double
+    rabat:
+      type: number
+      format: double
+    rabat_proc:
+      type: number
+      format: double

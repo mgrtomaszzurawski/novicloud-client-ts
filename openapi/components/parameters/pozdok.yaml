@@ -1,0 +1,117 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+PozdokIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for line item id.
+
+PozdokDokumentIdQuery:
+  name: dokument.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on parent document id.
+
+PozdokDokumentTypDokQuery:
+  name: dokument.typ_dok
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on parent document type.
+
+PozdokDokumentDataWystawieniaQuery:
+  name: dokument.data_wystawienia
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on parent document issue date.
+
+PozdokDokumentDataWplywuQuery:
+  name: dokument.data_wplywu
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on parent document receipt date.
+
+PozdokDokumentDataWykonaniaQuery:
+  name: dokument.data_wykonania
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on parent document execution date.
+
+PozdokDokumentNrDokQuery:
+  name: dokument.nr_dok
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter on parent document number (supports ~ wildcard).
+
+PozdokDokumentKontrahentIdQuery:
+  name: dokument.kontrahent.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on parent document counterparty id.
+
+PozdokDokumentPlatnikIdQuery:
+  name: dokument.platnik.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on parent document payer id.
+
+PozdokDokumentSklepIdQuery:
+  name: dokument.sklep.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on parent document shop id.
+
+PozdokDokumentKasaIdQuery:
+  name: dokument.kasa.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on parent document cash register id.
+
+PozdokDokumentKasjerIdQuery:
+  name: dokument.kasjer.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on parent document cashier id.
+
+PozdokTowarIdQuery:
+  name: towar.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on product id.
+
+PozdokNrPozycjiQuery:
+  name: nr_pozycji
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for line item number.

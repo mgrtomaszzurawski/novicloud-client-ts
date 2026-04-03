@@ -1,0 +1,157 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+SprzedazIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id.
+
+SprzedazDataQuery:
+  name: data
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for sale date (e.g. min2017-05-20, max2017-05-25T23:59:59).
+
+SprzedazNrDokQuery:
+  name: nr_dok
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for document name (supports ~ wildcard).
+
+SprzedazTypDokQuery:
+  name: typ_dok
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for document type.
+
+SprzedazNrSystemowyQuery:
+  name: nr_systemowy
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for system number from cash register.
+
+SprzedazNrFiskalnyQuery:
+  name: nr_fiskalny
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for fiscal number from cash register.
+
+SprzedazNrRapDobQuery:
+  name: nr_rap_dob
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for daily report number from cash register.
+
+SprzedazIloscQuery:
+  name: ilosc
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for quantity.
+
+SprzedazCenaQuery:
+  name: cena
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for sale price.
+
+SprzedazCenaPrzedRabQuery:
+  name: cena_przed_rab
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for price before discount.
+
+SprzedazStawkaVatQuery:
+  name: stawka_vat
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for VAT rate.
+
+SprzedazBruttoQuery:
+  name: brutto
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for gross value.
+
+SprzedazPodatekQuery:
+  name: podatek
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for tax value.
+
+SprzedazRabatQuery:
+  name: rabat
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for discount value.
+
+SprzedazTowarIdQuery:
+  name: towar.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on product id.
+
+SprzedazSklepIdQuery:
+  name: sklep.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on shop id.
+
+SprzedazKasaIdQuery:
+  name: kasa.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on cash register id.
+
+SprzedazKasjerIdQuery:
+  name: kasjer.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on cashier id.
+
+SprzedazKontrahentIdQuery:
+  name: kontrahent.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on counterparty id (null for no counterparty).

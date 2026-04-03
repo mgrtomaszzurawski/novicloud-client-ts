@@ -1,0 +1,53 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+WalutyIdQuery:
+  name: id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for id.
+
+WalutyNazwaQuery:
+  name: nazwa
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for currency name (supports ~ wildcard).
+
+WalutyKodQuery:
+  name: kod
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Text filter for currency code.
+
+WalutyKursQuery:
+  name: kurs
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter for exchange rate.
+
+WalutyDomyslnaQuery:
+  name: domyslna
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Default currency flag filter.
+
+WalutyAktywnyQuery:
+  name: aktywny
+  in: query
+  required: false
+  schema:
+    type: boolean
+  description: Active flag filter.

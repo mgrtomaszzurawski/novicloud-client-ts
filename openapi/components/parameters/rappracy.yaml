@@ -1,0 +1,57 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+RapPracyDataPoczQuery:
+  name: data_pocz
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Report start date in yyyy-MM-dd format. Defaults to 7 days ago.
+
+RapPracyDataKoncQuery:
+  name: data_konc
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Report end date in yyyy-MM-dd format. Defaults to current date.
+
+RapPracyGrupowanieQuery:
+  name: grupowanie
+  in: query
+  required: false
+  schema:
+    type: string
+    enum:
+      - sklep
+      - kasa
+      - kasjer
+  description: Grouping dimension. Omit for a single summary record.
+
+RapPracySklepIdQuery:
+  name: sklep.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List filter on shop id (when grupowanie=sklep).
+
+RapPracyKasaIdQuery:
+  name: kasa.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List filter on cash register id (when grupowanie=kasa).
+
+RapPracyKasjerIdQuery:
+  name: kasjer.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List filter on cashier id (when grupowanie=kasjer).

@@ -1,0 +1,28 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+Jmiary:
+  type: object
+  description: Unit of measure resource.
+  required:
+    - nazwa
+  properties:
+    id:
+      type: integer
+      format: int64
+    nazwa:
+      type: string
+    precyzja:
+      type: integer
+      format: int32
+      description: Precision (-2=quarters, -1=halves, 0=units, 1=tenths, 2=hundredths, 3=thousandths).
+      enum:
+        - -2
+        - -1
+        - 0
+        - 1
+        - 2
+        - 3

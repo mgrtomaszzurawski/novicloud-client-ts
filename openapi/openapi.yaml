@@ -1,0 +1,500 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+openapi: 3.0.3
+info:
+  title: NoviCloud REST API
+  version: '2.10'
+  description: NoviCloud REST API specification based on official documentation.
+  contact:
+    name: Tomasz Zurawski
+    url: https://github.com/mgrtomaszzurawski/novicloud-client-java
+  license:
+    name: AGPL-3.0
+    url: https://www.gnu.org/licenses/agpl-3.0.txt
+servers:
+  - url: https://system.novicloud.pl/rest/api
+    description: Latest API base URL
+  - url: https://system.novicloud.pl/rest/api/v2
+    description: Version 2 base URL
+security:
+  - basicAuth: []
+paths:
+  /{nazwa_konta}/towary:
+    $ref: './paths/towary.yaml#/towaryCollection'
+  /{nazwa_konta}/towary/{id}:
+    $ref: './paths/towary.yaml#/towaryById'
+  /{nazwa_konta}/asorty:
+    $ref: './paths/asorty.yaml#/asortCollection'
+  /{nazwa_konta}/asorty/{id}:
+    $ref: './paths/asorty.yaml#/asortById'
+  /{nazwa_konta}/jmiary:
+    $ref: './paths/jmiary.yaml#/jmiaraCollection'
+  /{nazwa_konta}/jmiary/{id}:
+    $ref: './paths/jmiary.yaml#/jmiaraById'
+  /{nazwa_konta}/stawkivat:
+    $ref: './paths/stawkivat.yaml#/stawkaVatCollection'
+  /{nazwa_konta}/stawkivat/{id}:
+    $ref: './paths/stawkivat.yaml#/stawkaVatById'
+  /{nazwa_konta}/kontrahenci:
+    $ref: './paths/kontrahenci.yaml#/kontrahentCollection'
+  /{nazwa_konta}/kontrahenci/{id}:
+    $ref: './paths/kontrahenci.yaml#/kontrahentById'
+  /{nazwa_konta}/sklepy:
+    $ref: './paths/sklepy.yaml#/sklepCollection'
+  /{nazwa_konta}/sklepy/{id}:
+    $ref: './paths/sklepy.yaml#/sklepById'
+  /{nazwa_konta}/kasy:
+    $ref: './paths/kasy.yaml#/kasaCollection'
+  /{nazwa_konta}/kasy/{id}:
+    $ref: './paths/kasy.yaml#/kasaById'
+  /{nazwa_konta}/kasjerzy:
+    $ref: './paths/kasjerzy.yaml#/kasjerCollection'
+  /{nazwa_konta}/kasjerzy/{id}:
+    $ref: './paths/kasjerzy.yaml#/kasjerById'
+  /{nazwa_konta}/waluty:
+    $ref: './paths/waluty.yaml#/walutaCollection'
+  /{nazwa_konta}/waluty/{id}:
+    $ref: './paths/waluty.yaml#/walutaById'
+  /{nazwa_konta}/kraje:
+    $ref: './paths/kraje.yaml#/krajCollection'
+  /{nazwa_konta}/kraje/{id}:
+    $ref: './paths/kraje.yaml#/krajById'
+  /{nazwa_konta}/formyplatn:
+    $ref: './paths/formyplatn.yaml#/formaPlatnCollection'
+  /{nazwa_konta}/formyplatn/{id}:
+    $ref: './paths/formyplatn.yaml#/formaPlatnById'
+  /{nazwa_konta}/dokumenty:
+    $ref: './paths/dokumenty.yaml#/dokumentCollection'
+  /{nazwa_konta}/dokumenty/{id}:
+    $ref: './paths/dokumenty.yaml#/dokumentById'
+  /{nazwa_konta}/pozdok:
+    $ref: './paths/pozdok.yaml#/pozdokCollection'
+  /{nazwa_konta}/pozdok/{id}:
+    $ref: './paths/pozdok.yaml#/pozdokById'
+  /{nazwa_konta}/stanymag:
+    $ref: './paths/stanymag.yaml#/stanMagCollection'
+  /{nazwa_konta}/stanymag/{id_towaru}:
+    $ref: './paths/stanymag.yaml#/stanMagByTowar'
+  /{nazwa_konta}/stanymag/{id_towaru}/{id_sklepu}:
+    $ref: './paths/stanymag.yaml#/stanMagByTowarAndSklep'
+  /{nazwa_konta}/sprzedaz:
+    $ref: './paths/sprzedaz.yaml#/sprzedazCollection'
+  /{nazwa_konta}/sprzedaz/{id}:
+    $ref: './paths/sprzedaz.yaml#/sprzedazById'
+  /{nazwa_konta}/rapsprzed:
+    $ref: './paths/rapsprzed.yaml#/rapSprzedCollection'
+  /{nazwa_konta}/rappracy:
+    $ref: './paths/rappracy.yaml#/rapPracyCollection'
+  /{nazwa_konta}/f-karty-loj:
+    $ref: './paths/kartyloj.yaml#/kartaLojCollection'
+  /{nazwa_konta}/f-karty-loj/{kod}:
+    $ref: './paths/kartyloj.yaml#/kartaLojByKod'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  parameters:
+    AccountNamePath:
+      $ref: './components/parameters/common.yaml#/AccountNamePath'
+    IdPath:
+      $ref: './components/parameters/common.yaml#/IdPath'
+    StartQuery:
+      $ref: './components/parameters/common.yaml#/StartQuery'
+    ContentQuery:
+      $ref: './components/parameters/common.yaml#/ContentQuery'
+    FtsQuery:
+      $ref: './components/parameters/common.yaml#/FtsQuery'
+    # Towary
+    TowaryIdQuery:
+      $ref: './components/parameters/towary.yaml#/TowaryIdQuery'
+    TowaryNazwaQuery:
+      $ref: './components/parameters/towary.yaml#/TowaryNazwaQuery'
+    TowaryKodQuery:
+      $ref: './components/parameters/towary.yaml#/TowaryKodQuery'
+    TowaryStawkaVatQuery:
+      $ref: './components/parameters/towary.yaml#/TowaryStawkaVatQuery'
+    TowaryAkcyzowyQuery:
+      $ref: './components/parameters/towary.yaml#/TowaryAkcyzowyQuery'
+    TowaryTypQuery:
+      $ref: './components/parameters/towary.yaml#/TowaryTypQuery'
+    TowaryCenaDetQuery:
+      $ref: './components/parameters/towary.yaml#/TowaryCenaDetQuery'
+    TowaryJmIdQuery:
+      $ref: './components/parameters/towary.yaml#/TowaryJmIdQuery'
+    TowaryAsortIdQuery:
+      $ref: './components/parameters/towary.yaml#/TowaryAsortIdQuery'
+    TowaryAktywnyQuery:
+      $ref: './components/parameters/towary.yaml#/TowaryAktywnyQuery'
+    # Asorty
+    AsortyIdQuery:
+      $ref: './components/parameters/asorty.yaml#/AsortyIdQuery'
+    AsortyNazwaQuery:
+      $ref: './components/parameters/asorty.yaml#/AsortyNazwaQuery'
+    AsortyParentIdQuery:
+      $ref: './components/parameters/asorty.yaml#/AsortyParentIdQuery'
+    # Jmiary
+    JmiaryIdQuery:
+      $ref: './components/parameters/jmiary.yaml#/JmiaryIdQuery'
+    JmiaryNazwaQuery:
+      $ref: './components/parameters/jmiary.yaml#/JmiaryNazwaQuery'
+    JmiaryPrecyzjaQuery:
+      $ref: './components/parameters/jmiary.yaml#/JmiaryPrecyzjaQuery'
+    # StawkiVat
+    StawkiVatIdQuery:
+      $ref: './components/parameters/stawkivat.yaml#/StawkiVatIdQuery'
+    # Kontrahenci
+    KontrahenciIdQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciIdQuery'
+    KontrahenciNazwaQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciNazwaQuery'
+    KontrahenciNipQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciNipQuery'
+    KontrahenciSkrotQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciSkrotQuery'
+    KontrahenciUlicaQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciUlicaQuery'
+    KontrahenciNrDomuQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciNrDomuQuery'
+    KontrahenciNrLokoluQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciNrLokoluQuery'
+    KontrahenciKodPocztQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciKodPocztQuery'
+    KontrahenciPocztaQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciPocztaQuery'
+    KontrahenciMiastoQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciMiastoQuery'
+    KontrahenciTelefonQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciTelefonQuery'
+    KontrahenciEmailQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciEmailQuery'
+    KontrahenciKrajIdQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciKrajIdQuery'
+    KontrahenciAktywnyQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciAktywnyQuery'
+    KontrahenciDostawcaQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciDostawcaQuery'
+    KontrahenciStalyQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciStalyQuery'
+    KontrahenciProducentQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciProducentQuery'
+    KontrahenciOdbiorcaQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciOdbiorcaQuery'
+    KontrahenciOsobaQuery:
+      $ref: './components/parameters/kontrahenci.yaml#/KontrahenciOsobaQuery'
+    # Sklepy
+    SklepyIdQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyIdQuery'
+    SklepyNazwaQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyNazwaQuery'
+    SklepyNipQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyNipQuery'
+    SklepySkrotQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepySkrotQuery'
+    SklepyNumerQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyNumerQuery'
+    SklepyUlicaQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyUlicaQuery'
+    SklepyNrDomuQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyNrDomuQuery'
+    SklepyNrLokuluQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyNrLokuluQuery'
+    SklepyKodPocztQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyKodPocztQuery'
+    SklepyPocztaQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyPocztaQuery'
+    SklepyMiastoQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyMiastoQuery'
+    SklepyTelefonQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyTelefonQuery'
+    SklepyEmailQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyEmailQuery'
+    SklepyKrajIdQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyKrajIdQuery'
+    SklepyAktywnyQuery:
+      $ref: './components/parameters/sklepy.yaml#/SklepyAktywnyQuery'
+    # Kasy
+    KasyIdQuery:
+      $ref: './components/parameters/kasy.yaml#/KasyIdQuery'
+    KasyNazwaQuery:
+      $ref: './components/parameters/kasy.yaml#/KasyNazwaQuery'
+    KasyNumerQuery:
+      $ref: './components/parameters/kasy.yaml#/KasyNumerQuery'
+    KasyEcrQuery:
+      $ref: './components/parameters/kasy.yaml#/KasyEcrQuery'
+    KasyOstatniaSyncQuery:
+      $ref: './components/parameters/kasy.yaml#/KasyOstatniaSyncQuery'
+    KasyAktywnyQuery:
+      $ref: './components/parameters/kasy.yaml#/KasyAktywnyQuery'
+    # Kasjerzy
+    KasjerzyIdQuery:
+      $ref: './components/parameters/kasjerzy.yaml#/KasjerzyIdQuery'
+    KasjerzyNazwiskoQuery:
+      $ref: './components/parameters/kasjerzy.yaml#/KasjerzyNazwiskoQuery'
+    KasjerzyKodKasjeraQuery:
+      $ref: './components/parameters/kasjerzy.yaml#/KasjerzyKodKasjeraQuery'
+    KasjerzyAktywnyQuery:
+      $ref: './components/parameters/kasjerzy.yaml#/KasjerzyAktywnyQuery'
+    # Waluty
+    WalutyIdQuery:
+      $ref: './components/parameters/waluty.yaml#/WalutyIdQuery'
+    WalutyNazwaQuery:
+      $ref: './components/parameters/waluty.yaml#/WalutyNazwaQuery'
+    WalutyKodQuery:
+      $ref: './components/parameters/waluty.yaml#/WalutyKodQuery'
+    WalutyKursQuery:
+      $ref: './components/parameters/waluty.yaml#/WalutyKursQuery'
+    WalutyDomyslnaQuery:
+      $ref: './components/parameters/waluty.yaml#/WalutyDomyslnaQuery'
+    WalutyAktywnyQuery:
+      $ref: './components/parameters/waluty.yaml#/WalutyAktywnyQuery'
+    # Kraje
+    KrajeIdQuery:
+      $ref: './components/parameters/kraje.yaml#/KrajeIdQuery'
+    KrajeNazwaQuery:
+      $ref: './components/parameters/kraje.yaml#/KrajeNazwaQuery'
+    KrajeKodQuery:
+      $ref: './components/parameters/kraje.yaml#/KrajeKodQuery'
+    KrajeWalutaIdQuery:
+      $ref: './components/parameters/kraje.yaml#/KrajeWalutaIdQuery'
+    # FormyPlatn
+    FormyPlatnIdQuery:
+      $ref: './components/parameters/formyplatn.yaml#/FormyPlatnIdQuery'
+    FormyPlatnNazwaQuery:
+      $ref: './components/parameters/formyplatn.yaml#/FormyPlatnNazwaQuery'
+    FormyPlatnTypQuery:
+      $ref: './components/parameters/formyplatn.yaml#/FormyPlatnTypQuery'
+    # Dokumenty
+    DokumentyIdQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentyIdQuery'
+    DokumentyTypDokQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentyTypDokQuery'
+    DokumentyDataWystawieniaQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentyDataWystawieniaQuery'
+    DokumentyDataWplywuQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentyDataWplywuQuery'
+    DokumentyDataWykonaniaQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentyDataWykonaniaQuery'
+    DokumentyNrDokQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentyNrDokQuery'
+    DokumentySklepIdQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentySklepIdQuery'
+    DokumentySklepOdbIdQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentySklepOdbIdQuery'
+    DokumentyKontrahentIdQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentyKontrahentIdQuery'
+    DokumentyPlatnikIdQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentyPlatnikIdQuery'
+    DokumentyKasaIdQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentyKasaIdQuery'
+    DokumentyKasjerIdQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentyKasjerIdQuery'
+    DokumentyStornoQuery:
+      $ref: './components/parameters/dokumenty.yaml#/DokumentyStornoQuery'
+    # Pozdok
+    PozdokIdQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokIdQuery'
+    PozdokDokumentIdQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokDokumentIdQuery'
+    PozdokDokumentTypDokQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokDokumentTypDokQuery'
+    PozdokDokumentDataWystawieniaQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokDokumentDataWystawieniaQuery'
+    PozdokDokumentDataWplywuQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokDokumentDataWplywuQuery'
+    PozdokDokumentDataWykonaniaQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokDokumentDataWykonaniaQuery'
+    PozdokDokumentNrDokQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokDokumentNrDokQuery'
+    PozdokDokumentKontrahentIdQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokDokumentKontrahentIdQuery'
+    PozdokDokumentPlatnikIdQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokDokumentPlatnikIdQuery'
+    PozdokDokumentSklepIdQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokDokumentSklepIdQuery'
+    PozdokDokumentKasaIdQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokDokumentKasaIdQuery'
+    PozdokDokumentKasjerIdQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokDokumentKasjerIdQuery'
+    PozdokTowarIdQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokTowarIdQuery'
+    PozdokNrPozycjiQuery:
+      $ref: './components/parameters/pozdok.yaml#/PozdokNrPozycjiQuery'
+    # StanyMag
+    StanyMagTowarIdQuery:
+      $ref: './components/parameters/stanymag.yaml#/StanyMagTowarIdQuery'
+    StanyMagSklepIdQuery:
+      $ref: './components/parameters/stanymag.yaml#/StanyMagSklepIdQuery'
+    StanyMagNaDzienQuery:
+      $ref: './components/parameters/stanymag.yaml#/StanyMagNaDzienQuery'
+    StanyMagIdTowaruPath:
+      $ref: './components/parameters/stanymag.yaml#/StanyMagIdTowaruPath'
+    StanyMagIdSklepuPath:
+      $ref: './components/parameters/stanymag.yaml#/StanyMagIdSklepuPath'
+    # Sprzedaz
+    SprzedazIdQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazIdQuery'
+    SprzedazDataQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazDataQuery'
+    SprzedazNrDokQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazNrDokQuery'
+    SprzedazTypDokQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazTypDokQuery'
+    SprzedazNrSystemowyQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazNrSystemowyQuery'
+    SprzedazNrFiskalnyQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazNrFiskalnyQuery'
+    SprzedazNrRapDobQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazNrRapDobQuery'
+    SprzedazIloscQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazIloscQuery'
+    SprzedazCenaQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazCenaQuery'
+    SprzedazCenaPrzedRabQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazCenaPrzedRabQuery'
+    SprzedazStawkaVatQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazStawkaVatQuery'
+    SprzedazBruttoQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazBruttoQuery'
+    SprzedazPodatekQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazPodatekQuery'
+    SprzedazRabatQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazRabatQuery'
+    SprzedazTowarIdQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazTowarIdQuery'
+    SprzedazSklepIdQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazSklepIdQuery'
+    SprzedazKasaIdQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazKasaIdQuery'
+    SprzedazKasjerIdQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazKasjerIdQuery'
+    SprzedazKontrahentIdQuery:
+      $ref: './components/parameters/sprzedaz.yaml#/SprzedazKontrahentIdQuery'
+    # RapSprzed
+    RapSprzedDataPoczQuery:
+      $ref: './components/parameters/rapsprzed.yaml#/RapSprzedDataPoczQuery'
+    RapSprzedDataKoncQuery:
+      $ref: './components/parameters/rapsprzed.yaml#/RapSprzedDataKoncQuery'
+    RapSprzedGrupowanieQuery:
+      $ref: './components/parameters/rapsprzed.yaml#/RapSprzedGrupowanieQuery'
+    RapSprzedSkladnikiQuery:
+      $ref: './components/parameters/rapsprzed.yaml#/RapSprzedSkladnikiQuery'
+    RapSprzedTowarIdQuery:
+      $ref: './components/parameters/rapsprzed.yaml#/RapSprzedTowarIdQuery'
+    RapSprzedAsortIdQuery:
+      $ref: './components/parameters/rapsprzed.yaml#/RapSprzedAsortIdQuery'
+    RapSprzedSklepIdQuery:
+      $ref: './components/parameters/rapsprzed.yaml#/RapSprzedSklepIdQuery'
+    RapSprzedKasaIdQuery:
+      $ref: './components/parameters/rapsprzed.yaml#/RapSprzedKasaIdQuery'
+    RapSprzedKasjerIdQuery:
+      $ref: './components/parameters/rapsprzed.yaml#/RapSprzedKasjerIdQuery'
+    RapSprzedKontrahentIdQuery:
+      $ref: './components/parameters/rapsprzed.yaml#/RapSprzedKontrahentIdQuery'
+    RapSprzedFormaPlatnIdQuery:
+      $ref: './components/parameters/rapsprzed.yaml#/RapSprzedFormaPlatnIdQuery'
+    # RapPracy
+    RapPracyDataPoczQuery:
+      $ref: './components/parameters/rappracy.yaml#/RapPracyDataPoczQuery'
+    RapPracyDataKoncQuery:
+      $ref: './components/parameters/rappracy.yaml#/RapPracyDataKoncQuery'
+    RapPracyGrupowanieQuery:
+      $ref: './components/parameters/rappracy.yaml#/RapPracyGrupowanieQuery'
+    RapPracySklepIdQuery:
+      $ref: './components/parameters/rappracy.yaml#/RapPracySklepIdQuery'
+    RapPracyKasaIdQuery:
+      $ref: './components/parameters/rappracy.yaml#/RapPracyKasaIdQuery'
+    RapPracyKasjerIdQuery:
+      $ref: './components/parameters/rappracy.yaml#/RapPracyKasjerIdQuery'
+    # KartyLoj
+    KartyLojKodQuery:
+      $ref: './components/parameters/kartyloj.yaml#/KartyLojKodQuery'
+    KartyLojNazwiskoImieQuery:
+      $ref: './components/parameters/kartyloj.yaml#/KartyLojNazwiskoImieQuery'
+    KartyLojPosiadaczQuery:
+      $ref: './components/parameters/kartyloj.yaml#/KartyLojPosiadaczQuery'
+    KartyLojTelefonQuery:
+      $ref: './components/parameters/kartyloj.yaml#/KartyLojTelefonQuery'
+    KartyLojEmailQuery:
+      $ref: './components/parameters/kartyloj.yaml#/KartyLojEmailQuery'
+    KartyLojWaznaOdQuery:
+      $ref: './components/parameters/kartyloj.yaml#/KartyLojWaznaOdQuery'
+    KartyLojWaznaDoQuery:
+      $ref: './components/parameters/kartyloj.yaml#/KartyLojWaznaDoQuery'
+    KartyLojUniewaznionoQuery:
+      $ref: './components/parameters/kartyloj.yaml#/KartyLojUniewaznionoQuery'
+    KartyLojKodPath:
+      $ref: './components/parameters/kartyloj.yaml#/KartyLojKodPath'
+  schemas:
+    Link:
+      $ref: './components/schemas/common.yaml#/Link'
+    PaginationLinks:
+      $ref: './components/schemas/common.yaml#/PaginationLinks'
+    ErrorDetails:
+      $ref: './components/schemas/common.yaml#/ErrorDetails'
+    ApiResponseBase:
+      $ref: './components/schemas/common.yaml#/ApiResponseBase'
+    ApiResponseEmpty:
+      $ref: './components/schemas/envelopes.yaml#/ApiResponseEmpty'
+    ApiResponseError:
+      $ref: './components/schemas/envelopes.yaml#/ApiResponseError'
+    ApiResponseCreated:
+      $ref: './components/schemas/envelopes.yaml#/ApiResponseCreated'
+    ApiResponseTowar:
+      $ref: './components/schemas/envelopes.yaml#/ApiResponseTowar'
+    ApiResponseTowaryList:
+      $ref: './components/schemas/envelopes.yaml#/ApiResponseTowaryList'
+    Towar:
+      $ref: './components/schemas/towary.yaml#/Towar'
+    TowarKodDodatkowy:
+      $ref: './components/schemas/towary.yaml#/TowarKodDodatkowy'
+    TowarCenaWSklepie:
+      $ref: './components/schemas/towary.yaml#/TowarCenaWSklepie'
+    TowarSkladnik:
+      $ref: './components/schemas/towary.yaml#/TowarSkladnik'
+    TowarSkladnikTowar:
+      $ref: './components/schemas/towary.yaml#/TowarSkladnikTowar'
+    Asorty:
+      $ref: './components/schemas/asorty.yaml#/Asorty'
+    Jmiary:
+      $ref: './components/schemas/jmiary.yaml#/Jmiary'
+    StawkaVat:
+      $ref: './components/schemas/stawkivat.yaml#/StawkaVat'
+    Waluta:
+      $ref: './components/schemas/waluty.yaml#/Waluta'
+    Kraj:
+      $ref: './components/schemas/kraje.yaml#/Kraj'
+    FormaPlatn:
+      $ref: './components/schemas/formyplatn.yaml#/FormaPlatn'
+    Kontrahent:
+      $ref: './components/schemas/kontrahenci.yaml#/Kontrahent'
+    Sklep:
+      $ref: './components/schemas/sklepy.yaml#/Sklep'
+    Kasa:
+      $ref: './components/schemas/kasy.yaml#/Kasa'
+    Kasjer:
+      $ref: './components/schemas/kasjerzy.yaml#/Kasjer'
+    Dokument:
+      $ref: './components/schemas/dokumenty.yaml#/Dokument'
+    DokumentRozbicieVat:
+      $ref: './components/schemas/dokumenty.yaml#/DokumentRozbicieVat'
+    Platnosc:
+      $ref: './components/schemas/dokumenty.yaml#/Platnosc'
+    DokumentRozliczane:
+      $ref: './components/schemas/dokumenty.yaml#/DokumentRozliczane'
+    PozycjaDokumentu:
+      $ref: './components/schemas/pozdok.yaml#/PozycjaDokumentu'
+    StanMag:
+      $ref: './components/schemas/stanymag.yaml#/StanMag'
+    Sprzedaz:
+      $ref: './components/schemas/sprzedaz.yaml#/Sprzedaz'
+    RaportSprzedazy:
+      $ref: './components/schemas/rapsprzed.yaml#/RaportSprzedazy'
+    RaportPracy:
+      $ref: './components/schemas/rappracy.yaml#/RaportPracy'
+    KartaLojalnosciowa:
+      $ref: './components/schemas/kartyloj.yaml#/KartaLojalnosciowa'

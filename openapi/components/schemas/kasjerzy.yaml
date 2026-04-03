@@ -1,0 +1,21 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+Kasjer:
+  type: object
+  description: Cashier resource.
+  properties:
+    id:
+      type: integer
+      format: int64
+    nazwisko:
+      type: string
+      description: Cashier full name.
+    kod_kasjera:
+      type: string
+      description: Cashier card number.
+    aktywny:
+      type: boolean

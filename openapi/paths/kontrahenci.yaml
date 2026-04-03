@@ -1,0 +1,175 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+kontrahentCollection:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+  get:
+    summary: List counterparties
+    operationId: listKontrahenci
+    tags:
+      - Kontrahenci
+    parameters:
+      - $ref: '../openapi.yaml#/components/parameters/StartQuery'
+      - $ref: '../openapi.yaml#/components/parameters/ContentQuery'
+      - $ref: '../openapi.yaml#/components/parameters/FtsQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciNazwaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciNipQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciSkrotQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciUlicaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciNrDomuQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciNrLokoluQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciKodPocztQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciPocztaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciMiastoQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciTelefonQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciEmailQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciKrajIdQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciAktywnyQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciDostawcaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciStalyQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciProducentQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciOdbiorcaQuery'
+      - $ref: '../openapi.yaml#/components/parameters/KontrahenciOsobaQuery'
+    responses:
+      '200':
+        description: Counterparty collection response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseKontrahenciList'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  post:
+    summary: Create counterparty
+    operationId: createKontrahent
+    tags:
+      - Kontrahenci
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/Kontrahent'
+    responses:
+      '201':
+        description: Resource created.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseCreated'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  put:
+    summary: Update counterparty (id in body)
+    operationId: updateKontrahenci
+    tags:
+      - Kontrahenci
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/Kontrahent'
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+
+kontrahentById:
+  parameters:
+    - $ref: '../openapi.yaml#/components/parameters/AccountNamePath'
+    - $ref: '../openapi.yaml#/components/parameters/IdPath'
+  get:
+    summary: Get counterparty by id
+    operationId: getKontrahentById
+    tags:
+      - Kontrahenci
+    responses:
+      '200':
+        description: Single counterparty response.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseKontrahent'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  put:
+    summary: Update counterparty by id
+    operationId: updateKontrahentById
+    tags:
+      - Kontrahenci
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../openapi.yaml#/components/schemas/Kontrahent'
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+  delete:
+    summary: Delete counterparty by id
+    operationId: deleteKontrahent
+    tags:
+      - Kontrahenci
+    responses:
+      '200':
+        description: Success response with no data payload.
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/envelopes.yaml#/ApiResponseEmpty'
+      '400':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '401':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '402':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'
+      '500':
+        $ref: '../components/schemas/envelopes.yaml#/ApiResponseError'

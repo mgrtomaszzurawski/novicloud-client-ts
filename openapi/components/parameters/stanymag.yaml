@@ -1,0 +1,47 @@
+#
+# Copyright (c) 2026 Tomasz Zurawski
+# SPDX-License-Identifier: AGPL-3.0-only
+# https://github.com/mgrtomaszzurawski/novicloud-client-java
+#
+
+StanyMagTowarIdQuery:
+  name: towar.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on product id.
+
+StanyMagSklepIdQuery:
+  name: sklep.id
+  in: query
+  required: false
+  schema:
+    type: string
+  description: List or range filter on shop id.
+
+StanyMagNaDzienQuery:
+  name: na_dzien
+  in: query
+  required: false
+  schema:
+    type: string
+  description: Stock level date in yyyy-MM-dd format. Defaults to current date.
+
+StanyMagIdTowaruPath:
+  name: id_towaru
+  in: path
+  required: true
+  schema:
+    type: integer
+    format: int64
+  description: Product id for stock level queries.
+
+StanyMagIdSklepuPath:
+  name: id_sklepu
+  in: path
+  required: true
+  schema:
+    type: integer
+    format: int64
+  description: Shop id for stock level queries.
