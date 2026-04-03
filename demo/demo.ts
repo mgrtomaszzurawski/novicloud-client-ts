@@ -1,8 +1,10 @@
 /**
  * NoviCloud TypeScript SDK Demo App
  *
- * Exercises all 18 endpoints in READ_ONLY mode.
- * Equivalent of the Java demo-app.
+ * Exercises all 18 endpoints. Two modes:
+ *   READ_ONLY  - list + getById only (default)
+ *   CRUD_SAFE  - additionally tests create/update/delete on hard-delete endpoints
+ *                (asorty, jmiary, kraje) where records are fully removed after delete
  *
  * Usage:
  *   NOVICLOUD_ACCOUNT=your_account NOVICLOUD_PASSWORD=your_pass npx tsx demo/demo.ts
@@ -84,7 +86,93 @@ async function safe(endpoint: string, fn: () => Promise<void>): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
-// Runners
+// CRUD_SAFE test data - unique names to avoid collisions
+// ---------------------------------------------------------------------------
+
+const CRUD_TIMESTAMP = Date.now();
+const CRUD_ASORTY_NAME = `sdk-test-asorty-${CRUD_TIMESTAMP}`;
+const CRUD_JMIARY_NAME = `sdk-test-jm-${CRUD_TIMESTAMP}`;
+const CRUD_KRAJE_NAME = `SDK-Test-${CRUD_TIMESTAMP}`;
+const CRUD_KRAJE_KOD = `T${String(CRUD_TIMESTAMP).slice(-2)}`;
+
+// ---------------------------------------------------------------------------
+// CRUD_SAFE runners (create -> read -> update -> delete cycle)
+// ---------------------------------------------------------------------------
+
+async function runCrudAsorty(client: NoviCloudClient): Promise<void> {
+  const api = client.asorty();
+  log("crud-asorty", "create...");
+  const createdId = await api.create({ nazwa: CRUD_ASORTY_NAME } as never);
+  log("crud-asorty", `created -> id=${createdId}`);
+
+  if (!createdId) {
+    log("crud-asorty", "SKIP: create returned no id");
+    return;
+  }
+
+  const numericId = parseInt(createdId, 10);
+  const fetched = await api.getById(numericId);
+  log("crud-asorty", `getById(${numericId}) -> nazwa=${fetched.nazwa}`);
+
+  const updatedName = `${CRUD_ASORTY_NAME}-updated`;
+  await api.update({ id: numericId, nazwa: updatedName } as never);
+  const afterUpdate = await api.getById(numericId);
+  log("crud-asorty", `update -> nazwa=${afterUpdate.nazwa}`);
+
+  await api.deleteById(numericId);
+  log("crud-asorty", `deleteById(${numericId}) -> hard-deleted`);
+}
+
+async function runCrudJmiary(client: NoviCloudClient): Promise<void> {
+  const api = client.jmiary();
+  log("crud-jmiary", "create...");
+  const createdId = await api.create({ nazwa: CRUD_JMIARY_NAME, precyzja: 2 } as never);
+  log("crud-jmiary", `created -> id=${createdId}`);
+
+  if (!createdId) {
+    log("crud-jmiary", "SKIP: create returned no id");
+    return;
+  }
+
+  const numericId = parseInt(createdId, 10);
+  const fetched = await api.getById(numericId);
+  log("crud-jmiary", `getById(${numericId}) -> nazwa=${fetched.nazwa} precyzja=${fetched.precyzja}`);
+
+  const updatedName = `${CRUD_JMIARY_NAME}-upd`;
+  await api.update({ id: numericId, nazwa: updatedName, precyzja: 3 } as never);
+  const afterUpdate = await api.getById(numericId);
+  log("crud-jmiary", `update -> nazwa=${afterUpdate.nazwa} precyzja=${afterUpdate.precyzja}`);
+
+  await api.deleteById(numericId);
+  log("crud-jmiary", `deleteById(${numericId}) -> hard-deleted`);
+}
+
+async function runCrudKraje(client: NoviCloudClient): Promise<void> {
+  const api = client.kraje();
+  log("crud-kraje", "create...");
+  const createdId = await api.create({ nazwa: CRUD_KRAJE_NAME, kod: CRUD_KRAJE_KOD } as never);
+  log("crud-kraje", `created -> id=${createdId}`);
+
+  if (!createdId) {
+    log("crud-kraje", "SKIP: create returned no id");
+    return;
+  }
+
+  const numericId = parseInt(createdId, 10);
+  const fetched = await api.getById(numericId);
+  log("crud-kraje", `getById(${numericId}) -> nazwa=${fetched.nazwa} kod=${fetched.kod}`);
+
+  const updatedName = `${CRUD_KRAJE_NAME}-upd`;
+  await api.update({ id: numericId, nazwa: updatedName, kod: CRUD_KRAJE_KOD } as never);
+  const afterUpdate = await api.getById(numericId);
+  log("crud-kraje", `update -> nazwa=${afterUpdate.nazwa}`);
+
+  await api.deleteById(numericId);
+  log("crud-kraje", `deleteById(${numericId}) -> hard-deleted`);
+}
+
+// ---------------------------------------------------------------------------
+// READ_ONLY runners
 // ---------------------------------------------------------------------------
 
 async function runTowary(client: NoviCloudClient): Promise<void> {
@@ -257,6 +345,23 @@ async function main(): Promise<void> {
   for (const [name, runner] of runners) {
     console.log(`\n--- ${name.toUpperCase()} ---`);
     await safe(name, () => runner(client));
+  }
+
+  // CRUD_SAFE: create -> read -> update -> delete on hard-delete endpoints
+  if (MODE === "CRUD_SAFE") {
+    console.log("\n" + "=".repeat(60));
+    console.log("CRUD_SAFE: testing create/update/delete on hard-delete endpoints\n");
+
+    const crudRunners: [string, (c: NoviCloudClient) => Promise<void>][] = [
+      ["crud-asorty", runCrudAsorty],
+      ["crud-jmiary", runCrudJmiary],
+      ["crud-kraje", runCrudKraje],
+    ];
+
+    for (const [crudName, crudRunner] of crudRunners) {
+      console.log(`\n--- ${crudName.toUpperCase()} ---`);
+      await safe(crudName, () => crudRunner(client));
+    }
   }
 
   console.log("\n" + "=".repeat(60));
