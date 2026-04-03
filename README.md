@@ -162,6 +162,16 @@ towar.jm;         // unit of measure (Link object)
 towar.asort;      // assortment group (Link object)
 ```
 
+## Examples
+
+See the [examples/](examples/) directory for standalone usage snippets:
+
+- [basic-usage.ts](examples/basic-usage.ts) - list, count, getById
+- [pagination.ts](examples/pagination.ts) - async iteration, seek, fetchFrom
+- [error-handling.ts](examples/error-handling.ts) - typed errors, retry config
+- [crud-operations.ts](examples/crud-operations.ts) - create, update, delete
+- [filtered-queries.ts](examples/filtered-queries.ts) - typed query filters, reports
+
 ## Requirements
 
 - Node.js >= 18.0.0 (uses native `fetch`)
