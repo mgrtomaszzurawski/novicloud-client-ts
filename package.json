@@ -1,0 +1,63 @@
+{
+  "name": "novicloud-client",
+  "version": "1.0.0",
+  "description": "TypeScript SDK for NoviCloud REST API v2.10",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "generate": "openapi-generator-cli generate -i openapi/openapi.yaml -g typescript-fetch -o src/generated --additional-properties=supportsES6=true,typescriptThreePlus=true,npmName=novicloud-client",
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "tsc --noEmit && eslint src/ test/ demo/",
+    "lint:fix": "eslint --fix src/ test/ demo/",
+    "format": "prettier --write src/ test/ demo/",
+    "format:check": "prettier --check src/ test/ demo/",
+    "demo": "tsx demo/demo.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "novicloud",
+    "pos",
+    "api",
+    "sdk",
+    "rest"
+  ],
+  "author": "Tomasz Zurawski",
+  "license": "AGPL-3.0",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.31.0",
+    "@types/node": "^25.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.58.0",
+    "@typescript-eslint/parser": "^8.58.0",
+    "@vitest/coverage-v8": "^4.1.2",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.8",
+    "msw": "^2.12.14",
+    "prettier": "^3.8.1",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
+  }
+}
