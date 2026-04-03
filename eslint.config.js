@@ -31,7 +31,7 @@ export default [
     },
   },
   {
-    files: ["test/**/*.ts", "demo/**/*.ts"],
+    files: ["test/**/*.ts", "demo/**/*.ts", "examples/**/*.ts"],
     languageOptions: {
       parser: tsparser,
       parserOptions: {

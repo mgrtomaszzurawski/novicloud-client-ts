@@ -4,3 +4,5 @@ src/generated/
 coverage/
 *.tsbuildinfo
 .env
+.reviews/
+context/
